@@ -1,6 +1,299 @@
-<!doctype html><html lang="sk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102b34"><title>KamV ČESKOSLOVENSKU – nový návrh</title><link rel="stylesheet" href="styles.css"></head><body>
-<header class="header"><a class="logo" href="#top"><span class="logo-icon">⌖</span><span>KamV <b>ČESKOSLOVENSKU</b><small>Česko a Slovensko na jednom mieste</small></span></a><div class="header-right"><span class="draft">UKÁŽKA NÁVRHU</span><select id="language" aria-label="Jazyk"><option value="sk">SK</option><option value="cs">CZ</option><option value="en">EN</option></select></div></header>
-<main id="top"><section class="hero"><div class="hero-copy"><span class="pill">🇨🇿 ČESKO &nbsp; + &nbsp; 🇸🇰 SLOVENSKO</span><h1 id="headline">Zážitky sú bližšie,<br><em>než si myslíte.</em></h1><p id="intro">Objavte akcie, výlety a trasy na jednom mieste. Vyberte si, kam sa dnes vydáte.</p><a class="hero-btn" href="#objavujte">Objavovať miesta <span>↗</span></a></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div><div class="hill"></div><span class="art-pin p1">⌖</span><span class="art-pin p2">⌖</span><span class="art-label">Dva štáty.<br> Tisíce možností.</span></div></section>
-<section id="objavujte" class="container"><div class="section-top"><div><span class="eyebrow">VYBERTE SI SVOJ ZÁŽITOK</span><h2>Čo vás dnes láka?</h2></div><p>Od mestských podujatí po horské chodníky.</p></div><div class="categories" id="categories"><button data-cat="Akcie"><span>🎉</span>Akcie</button><button data-cat="Turistika"><span>🥾</span>Turistika</button><button data-cat="Cykloturistika"><span>🚴</span>Cykloturistika</button><button data-cat="Mototuristika"><span>🏍️</span>Mototuristika</button><button data-cat="So psíkom"><span>🐕</span>So psíkom</button><button data-cat="Rodina"><span>👨‍👩‍👧</span>Rodina</button><button data-cat="Kemp & karavan"><span>🏕️</span>Kemp & karavan</button><button data-cat="Doprava"><span>🚆</span>Doprava</button></div>
-<div class="explore"><div class="explore-heading"><div><span class="eyebrow">NAPLÁNUJTE SI CESTU</span><h2>Objavujte na mape</h2></div><span class="sample">Ilustračná mapa • ukážkové body</span></div><div class="filters"><label>Miesto<input id="place" placeholder="Mesto alebo oblasť"></label><label>Kategória<select id="category"><option value="">Všetky kategórie</option><option>Akcie</option><option>Turistika</option><option>Cykloturistika</option><option>Mototuristika</option><option>So psíkom</option><option>Rodina</option><option>Kemp & karavan</option><option>Doprava</option></select></label><button id="search">Hľadať ↗</button></div><div class="map-area"><div class="map-title"><b>ČESKO</b><b>SLOVENSKO</b></div><svg viewBox="0 0 850 350" role="img" aria-label="Ilustračná grafika Česka a Slovenska, nie navigačná mapa"><defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#d8e9e1" stroke-width="1"/></pattern></defs><rect width="850" height="350" fill="url(#grid)"/><path d="M62 146 110 111 156 118 204 92 254 116 300 105 351 131 378 164 340 195 277 186 241 214 186 193 133 205 91 182Z" fill="#a9cfb7" stroke="#72a78b" stroke-width="3"/><path d="M359 197 402 172 459 185 502 170 548 192 605 180 661 201 724 193 779 224 749 261 689 270 635 252 583 272 535 249 485 258 437 235 396 248Z" fill="#8fc5ad" stroke="#72a78b" stroke-width="3"/><g fill="#f46f43" stroke="white" stroke-width="4"><circle cx="183" cy="153" r="11"/><circle cx="305" cy="148" r="11"/><circle cx="489" cy="218" r="11"/><circle cx="655" cy="222" r="11"/></g><g fill="#365b52" font-size="16" font-weight="700"><text x="130" y="250">Česko</text><text x="550" y="308">Slovensko</text></g></svg><span class="map-caption">Skutočnú interaktívnu mapu a aktuálne údaje doplníme v ďalšej fáze.</span></div></div>
-<div class="section-top picks"><div><span class="eyebrow">INŠPIRÁCIA NA ZAČIATOK</span><h2>Tipy na objavovanie</h2></div><span class="sample">Ukážkové karty – nejde o overené podujatia</span></div><div class="cards" id="cards"></div></section></main><footer><b>KamV ČESKOSLOVENSKU</b><span>Pracovný návrh webu • bez verejnej administrácie a bez napojenia na databázu</span></footer><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>KamV ČESKOSLOVENSKU</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="#top">
+    <span class="logo-icon">📍</span>
+    <span>
+      KamV <b>ČESKOSLOVENSKU</b>
+      <small>Česko a Slovensko na jednom mieste</small>
+    </span>
+  </a>
+
+  <nav class="nav">
+    <a href="#podujatia">Podujatia</a>
+    <a href="#turistika">Turistika</a>
+    <a href="#cyklistika">Cyklistika</a>
+    <a href="#moto">Moto</a>
+    <a href="#pes">So psom</a>
+    <a href="#rodina">Rodina</a>
+    <a href="#kemping">Kemping</a>
+    <a href="#doprava">Doprava</a>
+  </nav>
+
+  <div class="header-actions">
+    <button aria-label="Hľadať">⌕</button>
+    <button aria-label="Obľúbené">♡</button>
+    <button class="login">Prihlásiť</button>
+  </div>
+</header>
+
+
+<main id="top">
+
+<section class="hero-photo">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Objavuj zážitky<br>v Česku a na Slovensku</h1>
+
+      <p>
+        Podujatia, výlety, turistické miesta a tipy na voľný čas
+        na jednom mieste.
+      </p>
+
+      <div class="search-box">
+        <div>🔍 Čo hľadáte? <span>(podujatie, miesto, aktivita...)</span></div>
+        <div>📍 Kde? <span>(mesto, región)</span></div>
+        <div>📅 Kedy?</div>
+        <button>Hľadať</button>
+      </div>
+
+      <div class="quick-tags">
+        <span>Obľúbené:</span>
+        <a href="#">Výlety s deťmi</a>
+        <a href="#">Hrady a zámky</a>
+        <a href="#">Turistické trasy</a>
+        <a href="#">Cyklo trasy</a>
+        <a href="#">Kúpaliská</a>
+        <a href="#">Festivaly</a>
+        <a href="#">Kempingy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="category-grid">
+
+  <a id="podujatia" class="category-card" href="#">
+    <span>🗓️</span>
+    <b>Podujatia</b>
+    <small>Koncerty, festivaly, trhy...</small>
+  </a>
+
+  <a id="turistika" class="category-card" href="#">
+    <span>🥾</span>
+    <b>Turistika</b>
+    <small>Výlety, trasy, príroda</small>
+  </a>
+
+  <a id="cyklistika" class="category-card" href="#">
+    <span>🚲</span>
+    <b>Cyklistika</b>
+    <small>Cyklo trasy, výlety</small>
+  </a>
+
+  <a id="moto" class="category-card" href="#">
+    <span>🏍️</span>
+    <b>Moto</b>
+    <small>Trasy, zrazy, výlety</small>
+  </a>
+
+  <a id="pes" class="category-card" href="#">
+    <span>🐾</span>
+    <b>So psom</b>
+    <small>Výlety a miesta pre psov</small>
+  </a>
+
+  <a id="rodina" class="category-card" href="#">
+    <span>👨‍👩‍👧</span>
+    <b>Rodina</b>
+    <small>Tipy pre deti a rodiny</small>
+  </a>
+
+  <a id="kemping" class="category-card" href="#">
+    <span>⛺</span>
+    <b>Kemping</b>
+    <small>Kempy a stellplatzy</small>
+  </a>
+
+  <a id="doprava" class="category-card" href="#">
+    <span>🚐</span>
+    <b>Doprava</b>
+    <small>Trasy, parkovanie, info</small>
+  </a>
+
+</section>
+
+
+<section class="content-section">
+  <div class="section-title">
+    <h2>Najbližšie podujatia</h2>
+    <a href="#">Zobraziť všetky podujatia →</a>
+  </div>
+
+  <div class="event-grid">
+
+    <article class="event-card">
+      <div class="event-image event-one">
+        <span class="date">28<br><small>SEP</small></span>
+        <button>♡</button>
+      </div>
+      <h3>Hudobný festival</h3>
+      <p>📍 Slovensko</p>
+      <span class="event-tag">Koncert</span>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image event-two">
+        <span class="date">30<br><small>SEP</small></span>
+        <button>♡</button>
+      </div>
+      <h3>Rytierske dni na hrade</h3>
+      <p>📍 Beckov</p>
+      <span class="event-tag">Historické podujatie</span>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image event-three">
+        <span class="date">3<br><small>OKT</small></span>
+        <button>♡</button>
+      </div>
+      <h3>Vinobranie</h3>
+      <p>📍 Pezinok</p>
+      <span class="event-tag">Festival</span>
+    </article>
+
+    <article class="event-card">
+      <div class="event-image event-four">
+        <span class="date">5<br><small>OKT</small></span>
+        <button>♡</button>
+      </div>
+      <h3>Mestský maratón</h3>
+      <p>📍 Košice</p>
+      <span class="event-tag">Šport</span>
+    </article>
+
+  </div>
+</section>
+
+
+<section class="map-section">
+  <div class="map-copy">
+    <h2>Objavuj na mape</h2>
+    <p>Podujatia, výlety, zaujímavé miesta a mnohé ďalšie.</p>
+    <button>Zobraziť mapu</button>
+  </div>
+
+  <div class="map-art">
+    <span class="pin p1">⛺</span>
+    <span class="pin p2">🚶</span>
+    <span class="pin p3">🎵</span>
+    <span class="pin p4">🚲</span>
+    <span class="pin p5">🐾</span>
+    <span class="pin p6">🏰</span>
+    <strong>ČESKO &nbsp; • &nbsp; SLOVENSKO</strong>
+  </div>
+</section>
+
+
+<section class="content-section">
+  <div class="section-title">
+    <h2>Obľúbené destinácie</h2>
+    <a href="#">Zobraziť všetky destinácie →</a>
+  </div>
+
+  <div class="destination-grid">
+
+    <article class="destination-card">
+      <div class="destination-photo d1"></div>
+      <h3>Vysoké Tatry</h3>
+      <p>Turistika, výlety</p>
+    </article>
+
+    <article class="destination-card">
+      <div class="destination-photo d2"></div>
+      <h3>Slovenský raj</h3>
+      <p>Príroda, turistika</p>
+    </article>
+
+    <article class="destination-card">
+      <div class="destination-photo d3"></div>
+      <h3>Český raj</h3>
+      <p>Skalné mestá, výlety</p>
+    </article>
+
+    <article class="destination-card">
+      <div class="destination-photo d4"></div>
+      <h3>Liptov</h3>
+      <p>Voda, hory, rodina</p>
+    </article>
+
+    <article class="destination-card">
+      <div class="destination-photo d5"></div>
+      <h3>Moravský kras</h3>
+      <p>Jaskyne, príroda</p>
+    </article>
+
+    <article class="destination-card">
+      <div class="destination-photo d6"></div>
+      <h3>Šumava</h3>
+      <p>Turistika, cyklistika</p>
+    </article>
+
+  </div>
+</section>
+
+
+<section class="content-section inspiration">
+  <div class="section-title">
+    <h2>Tipy a inšpirácia</h2>
+    <a href="#">Zobraziť všetky články →</a>
+  </div>
+
+  <div class="article-grid">
+
+    <article>
+      <div class="article-photo a1"></div>
+      <h3>10 najkrajších jesenných výletov</h3>
+    </article>
+
+    <article>
+      <div class="article-photo a2"></div>
+      <h3>Hrady a zámky, ktoré sa oplatí navštíviť</h3>
+    </article>
+
+    <article>
+      <div class="article-photo a3"></div>
+      <h3>Kam na výlet s deťmi?</h3>
+    </article>
+
+    <article>
+      <div class="article-photo a4"></div>
+      <h3>Kempingy v Česku a na Slovensku</h3>
+    </article>
+
+    <article>
+      <div class="article-photo a5"></div>
+      <h3>Výlety so psom</h3>
+    </article>
+
+    <article>
+      <div class="article-photo a6"></div>
+      <h3>Najkrajšie cyklotrasy pre rodiny</h3>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  <strong>KamV ČESKOSLOVENSKU</strong>
+  <p>Česko a Slovensko na jednom mieste.</p>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
