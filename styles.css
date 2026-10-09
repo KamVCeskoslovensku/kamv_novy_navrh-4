@@ -76,3 +76,90 @@ button {
 html {
   scroll-behavior: smooth;
 }
+/* Vzhľad hlavnej stránky KamV */
+.hero-photo {
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  padding: 60px 24px;
+}
+.hero-overlay {
+  width: 100%;
+  max-width: 1190px;
+  margin: auto;
+}
+.hero-content {
+  max-width: 850px;
+}
+.hero-content h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 28px 0 20px;
+  padding: 14px;
+  background: white;
+  color: #203b39;
+  border-radius: 16px;
+}
+.search-box > div {
+  flex: 1 1 160px;
+  padding: 10px;
+}
+.search-box span {
+  display: block;
+  color: #718681;
+  font-size: 12px;
+}
+.search-box button,
+.map-copy button {
+  background: #e8b85d;
+  color: #173b38;
+  border: 0;
+  font-weight: 700;
+}
+.quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.quick-tags a {
+  color: #e8f5e9;
+  text-decoration: none;
+}
+.category-grid {
+  max-width: 1190px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e1ebe4;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #244a3410;
+}
+.category-card span { font-size: 30px; }
+.category-card small { color: #718681; }
+.category-card.active {
+  background: #eaf7ee;
+  border-color: #258a65;
+}
+@media (max-width: 750px) {
+  .hero-photo { padding: 40px 18px; }
+  .search-box { flex-direction: column; align-items: stretch; }
+  .category-card { padding: 14px; }
+}
