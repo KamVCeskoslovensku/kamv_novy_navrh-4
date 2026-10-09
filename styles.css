@@ -175,3 +175,24 @@ html {
   height: auto;
   padding: 12px;
 }
+@media (max-width: 750px) {
+  .search-box {
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .search-box > div {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 12px !important;
+    flex: none !important;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+}
