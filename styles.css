@@ -216,3 +216,9 @@ html {
     margin: 8px 0;
   }
 }
+@media (max-width: 750px) {
+  .event-card {
+    width: auto;
+    box-sizing: border-box;
+  }
+}
