@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Základná reakcia na vyhľadávanie.
   searchButton?.addEventListener('click', () => {
-    alert('Vyhľadávanie pripravujeme. Čoskoro tu nájdeš výlety a podujatia.');
+    
   });
 
   // Tlačidlo mapy.
