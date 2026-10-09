@@ -46,3 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+// Zapamätanie obľúbených podujatí
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.event-card button').forEach((button, index) => {
+    const key = 'kamv-favorite-' + index;
+
+    if (localStorage.getItem(key) === 'true') {
+      button.classList.add('active');
+      button.textContent = '♥';
+    }
+
+    button.addEventListener('click', () => {
+      localStorage.setItem(
+        key,
+        String(button.textContent.trim() === '♥')
+      );
+    });
+  });
+});
