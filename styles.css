@@ -196,3 +196,23 @@ html {
     width: 100%;
   }
 }
+/* Karty podujatí na mobile */
+@media (max-width: 750px) {
+  .event-card {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #e1ebe4;
+    border-radius: 16px;
+    padding: 18px;
+    margin: 14px 16px;
+    box-shadow: 0 5px 18px #244a3410;
+  }
+
+  .event-card h3 {
+    margin: 12px 0;
+  }
+
+  .event-card p {
+    margin: 8px 0;
+  }
+}
