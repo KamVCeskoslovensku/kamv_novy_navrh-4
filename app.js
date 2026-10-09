@@ -1,2 +1,48 @@
-const items=[{cat:'Akcie',title:'Kultúrne podujatia',place:'Kremnica',icon:'🎉',desc:'Ukážka karty podujatia. Skutočný program a termín budú doplnené po napojení na databázu.'},{cat:'Turistika',title:'Horské výlety',place:'Kremnické vrchy',icon:'⛰️',desc:'Ukážka turistickej trasy s budúcimi údajmi o dĺžke, prevýšení a náročnosti.'},{cat:'Cykloturistika',title:'Cyklistické trasy',place:'Slovensko',icon:'🚴',desc:'Ukážka tipov na cyklovýlety a miesta vhodné pre bicykel.'},{cat:'Mototuristika',title:'Moto výlety',place:'Česko',icon:'🏍️',desc:'Ukážka trás s možnosťou zastávok a plánovania cesty.'},{cat:'So psíkom',title:'Výlety so psíkom',place:'Slovensko',icon:'🐕',desc:'Ukážka miest a trás vhodných na výlet so psom.'},{cat:'Rodina',title:'Rodinné výlety',place:'Česko',icon:'👨‍👩‍👧',desc:'Ukážka aktivít a miest pre rodiny s deťmi.'},{cat:'Kemp & karavan',title:'Kempovanie a karavany',place:'Slovensko',icon:'🏕️',desc:'Ukážka tipov na pobyt v prírode a karavanové státie.'},{cat:'Doprava',title:'Cesta bez auta',place:'Česko',icon:'🚆',desc:'Ukážka budúceho plánovania spojenia vlakom, autobusom a pešo.'}];
-let active='';const cards=document.getElementById('cards'),category=document.getElementById('category'),place=document.getElementById('place');function render(){const q=place.value.trim().toLocaleLowerCase('sk');const found=items.filter(x=>(!active||x.cat===active)&&(!q||`${x.title} ${x.place} ${x.desc}`.toLocaleLowerCase('sk').includes(q)));cards.innerHTML=found.length?found.map(x=>`<article class="card"><div class="card-visual" aria-hidden="true">${x.icon}</div><div class="card-content"><span class="card-tag">${x.cat} · ukážka</span><h3>${x.title}</h3><p>📍 ${x.place}</p><p>${x.desc}</p></div></article>`).join(''):'<p class="empty">Pre zadané filtre nie je v ukážke žiadna karta. Skúste inú kategóriu alebo miesto.</p>'}document.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click',()=>{active=active===b.dataset.cat?'':b.dataset.cat;category.value=active;document.querySelectorAll('[data-cat]').forEach(el=>el.classList.toggle('active',el.dataset.cat===active));render();document.getElementById('cards').scrollIntoView({behavior:'smooth',block:'start'})}));category.addEventListener('change',()=>{active=category.value;document.querySelectorAll('[data-cat]').forEach(el=>el.classList.toggle('active',el.dataset.cat===active));render()});document.getElementById('search').addEventListener('click',()=>{render();cards.scrollIntoView({behavior:'smooth',block:'start'})});place.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('search').click()});document.getElementById('language').addEventListener('change',e=>{const t={sk:['Zážitky sú bližšie,<br><em>než si myslíte.</em>','Objavte akcie, výlety a trasy na jednom mieste. Vyberte si, kam sa dnes vydáte.'],cs:['Zážitky jsou blíž,<br><em>než si myslíte.</em>','Objevte akce, výlety a trasy na jednom místě. Vyberte si, kam se dnes vydáte.'],en:['Adventures are closer<br><em>than you think.</em>','Discover events, trips and routes in one place. Choose where to go today.']}[e.target.value];document.getElementById('headline').innerHTML=t[0];document.getElementById('intro').textContent=t[1]});render();
+document.addEventListener('DOMContentLoaded', () => {
+  const categories = document.querySelectorAll('.category-card');
+  const searchBox = document.querySelector('.search-box');
+  const searchButton = searchBox?.querySelector('button');
+
+  // Kliknutie na kategóriu presunie návštevníka
+  // na príslušnú časť stránky.
+  categories.forEach(card => {
+    card.addEventListener('click', event => {
+      event.preventDefault();
+
+      categories.forEach(item => item.classList.remove('active'));
+      card.classList.add('active');
+
+      const name = card.querySelector('b')?.textContent || '';
+      const section = document.querySelector('.content-section');
+
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      console.log('Vybraná kategória:', name);
+    });
+  });
+
+  // Základná reakcia na vyhľadávanie.
+  searchButton?.addEventListener('click', () => {
+    alert('Vyhľadávanie pripravujeme. Čoskoro tu nájdeš výlety a podujatia.');
+  });
+
+  // Tlačidlo mapy.
+  const mapButton = document.querySelector('.map-copy button');
+
+  mapButton?.addEventListener('click', () => {
+    document.querySelector('.map-art')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  });
+
+  // Obľúbené položky.
+  document.querySelectorAll('.event-card button').forEach(button => {
+    button.addEventListener('click', () => {
+      const selected = button.classList.toggle('selected');
+      button.textContent = selected ? '♥' : '♡';
+    });
+  });
+});
