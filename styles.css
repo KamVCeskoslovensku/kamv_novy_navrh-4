@@ -163,3 +163,15 @@ html {
   .search-box { flex-direction: column; align-items: stretch; }
   .category-card { padding: 14px; }
 }
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: auto;
+}
+
+.search-box > div {
+  min-height: 0;
+  height: auto;
+  padding: 12px;
+}
