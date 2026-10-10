@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Základná reakcia na vyhľadávanie.
   searchButton?.addEventListener('click', () => {
-    
+  const what = document.getElementById('search-what')?.value.trim() || '';
+const where = document.getElementById('search-where')?.value.trim() || '';
+const when = document.getElementById('search-when')?.value || '';
+const query = [what, where].filter(Boolean).join(' ');
+const url = new URL('https://www.google.com/search');
+url.searchParams.set('q', [query, when].filter(Boolean).join(' '));
+window.location.href = url.toString();  
   });
 
   // Tlačidlo mapy.
