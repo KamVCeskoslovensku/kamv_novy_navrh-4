@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "nazov": "Skúšobné podujatie",
+    "mesto": "Bratislava",
+    "krajina": "Slovensko",
+    "datum": "2026-10-17",
+    "kategoria": "Festival",
+    "popis": "Ukážkové podujatie na otestovanie našej stránky."
+  }
+]
