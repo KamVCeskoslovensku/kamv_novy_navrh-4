@@ -93,7 +93,7 @@ fetch('podujatia.json')
   .then(podujatia => {
     const zoznam = document.querySelector('.event-grid');
     if (!zoznam) return;
-
+zoznam.innerHTML = '';
     podujatia.forEach(p => {
       const karta = document.createElement('article');
       karta.className = 'event-card';
