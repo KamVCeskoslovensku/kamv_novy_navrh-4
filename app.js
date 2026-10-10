@@ -29,9 +29,27 @@ document.addEventListener('DOMContentLoaded', () => {
 const where = document.getElementById('search-where')?.value.trim() || '';
 const when = document.getElementById('search-when')?.value || '';
 const query = [what, where].filter(Boolean).join(' ');
-const url = new URL('https://www.google.com/search');
-url.searchParams.set('q', [query, when].filter(Boolean).join(' '));
-window.location.href = url.toString();  
+const cards = [...document.querySelectorAll('.event-card')];
+const text = query.toLocaleLowerCase('sk');
+let count = 0;
+
+cards.forEach(card => {
+  const matches = !text || text.split(' ').every(word =>
+    card.textContent.toLocaleLowerCase('sk').includes(word)
+  );
+  card.style.display = matches ? '' : 'none';
+  if (matches) count++;
+});
+
+let result = document.getElementById('search-result');
+if (!result) {
+  result = document.createElement('p');
+  result.id = 'search-result';
+  searchButton.insertAdjacentElement('afterend', result);
+}
+result.textContent = count
+  ? `Našli sme ${count} podujatí na našej stránke.`
+  : 'Zatiaľ nemáme podujatie podľa vášho výberu.';
   });
 
   // Tlačidlo mapy.
