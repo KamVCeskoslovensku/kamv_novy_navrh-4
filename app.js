@@ -109,4 +109,4 @@ zoznam.innerHTML = '';
     });
   })
   .catch(error => console.error('Chyba načítania podujatí:', error));
-});
+
