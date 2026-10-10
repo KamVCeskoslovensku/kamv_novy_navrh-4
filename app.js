@@ -109,3 +109,4 @@ fetch('podujatia.json')
     });
   })
   .catch(error => console.error('Chyba načítania podujatí:', error));
+});
