@@ -6,5 +6,13 @@
     "datum": "2026-10-17",
     "kategoria": "Festival",
     "popis": "Ukážkové podujatie na otestovanie našej stránky."
-  }
+  },
+  {
+  "nazov": "Skúšobný koncert",
+  "mesto": "Praha",
+  "krajina": "Česko",
+  "datum": "2026-10-18",
+  "kategoria": "Koncert",
+  "popis": "Testovacie podujatie na overenie vyhľadávania."
+}
 ]
