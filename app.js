@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
-
+const podujatia = await fetch('podujatia.json').then(response => response.json());
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
@@ -33,8 +33,13 @@ const query = [what, where].filter(Boolean).join(' ');
 const cards = [...document.querySelectorAll('.event-card')];
 const text = query.toLocaleLowerCase('sk');
 let count = 0;
+const najdene = podujatia.filter(p =>
+  (!what || (p.nazov + ' ' + p.kategoria + ' ' + p.popis).toLocaleLowerCase('sk').includes(what.toLocaleLowerCase('sk'))) &&
+  (!where || (p.mesto + ' ' + p.krajina).toLocaleLowerCase('sk').includes(where.toLocaleLowerCase('sk'))) &&
+  (!when || p.datum === when)
+);
 
-cards.forEach(card => {
+    cards.forEach(card => {
   const matches = !text || text.split(' ').every(word =>
     card.textContent.toLocaleLowerCase('sk').includes(word)
   );
