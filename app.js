@@ -25,7 +25,8 @@ const podujatia = await fetch('podujatia.json').then(response => response.json()
 
   // Základná reakcia na vyhľadávanie.
   searchButton?.addEventListener('click', () => {
-  const what = document.getElementById('search-what')?.value.trim() || '';
+ document.getElementById('nearby-results')?.remove();
+    const what = document.getElementById('search-what')?.value.trim() || '';
 const where = document.getElementById('search-where')?.value.trim() || '';
 const when = document.getElementById('search-when')?.value || '';
 const query = [what, where].filter(Boolean).join(' ');
