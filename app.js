@@ -117,3 +117,83 @@ zoznam.innerHTML = '';
   })
   .catch(error => console.error('Chyba načítania podujatí:', error));
 
+// Akcie v mojom okolí – do 50 km
+document.getElementById('nearby-events')?.addEventListener('click', () => {
+  const button = document.getElementById('nearby-events');
+
+  if (!navigator.geolocation) {
+    alert('Váš prehliadač nepodporuje zisťovanie polohy.');
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = '📍 Zisťujem vašu polohu...';
+
+  navigator.geolocation.getCurrentPosition(
+    async position => {
+      try {
+        const response = await fetch('podujatia.json');
+        if (!response.ok) throw new Error('Nepodarilo sa načítať podujatia.');
+
+        const podujatia = await response.json();
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        const vzdialenost = (lat2, lon2) => {
+          const rad = Math.PI / 180;
+          const dLat = (lat2 - lat) * rad;
+          const dLon = (lon2 - lon) * rad;
+          const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat * rad) * Math.cos(lat2 * rad) *
+            Math.sin(dLon / 2) ** 2;
+          return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+
+        const blizke = podujatia
+          .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon))
+          .map(p => ({ ...p, km: vzdialenost(p.lat, p.lon) }))
+          .filter(p => p.km <= 50)
+          .sort((a, b) => a.km - b.km);
+
+        let zoznam = document.getElementById('nearby-results');
+
+        if (!zoznam) {
+          zoznam = document.createElement('div');
+          zoznam.id = 'nearby-results';
+          button.insertAdjacentElement('afterend', zoznam);
+        }
+
+        zoznam.replaceChildren();
+
+        const nadpis = document.createElement('h3');
+        nadpis.textContent = '📍 Akcie do 50 km od vás';
+        zoznam.appendChild(nadpis);
+
+        if (!blizke.length) {
+          const sprava = document.createElement('p');
+          sprava.textContent = 'Zatiaľ nemáme v okolí do 50 km žiadne evidované podujatia.';
+          zoznam.appendChild(sprava);
+        }
+
+        blizke.forEach(p => {
+          const karta = document.createElement('p');
+          karta.textContent = `${p.nazov} – ${p.mesto} – ${p.km.toFixed(1)} km – ${p.datum}`;
+          zoznam.appendChild(karta);
+        });
+
+        zoznam.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (error) {
+        alert('Nepodarilo sa načítať podujatia. Skúste to znova.');
+      } finally {
+        button.disabled = false;
+        button.textContent = '📍 Akcie v mojom okolí (do 50 km)';
+      }
+    },
+    () => {
+      button.disabled = false;
+      button.textContent = '📍 Akcie v mojom okolí (do 50 km)';
+      alert('Povoľte prístup k polohe, aby sme mohli nájsť blízke akcie.');
+    },
+    { enableHighAccuracy: false, timeout: 15000 }
+  );
+});
