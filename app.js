@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const where = document.getElementById('search-where')?.value.trim() || '';
 const when = document.getElementById('search-when')?.value || '';
 const query = [what, where].filter(Boolean).join(' ');
+    const selectedDate = when;
 const cards = [...document.querySelectorAll('.event-card')];
 const text = query.toLocaleLowerCase('sk');
 let count = 0;
@@ -37,8 +38,9 @@ cards.forEach(card => {
   const matches = !text || text.split(' ').every(word =>
     card.textContent.toLocaleLowerCase('sk').includes(word)
   );
-  card.style.display = matches ? '' : 'none';
-  if (matches) count++;
+  const dateMatches = !selectedDate || card.textContent.includes(selectedDate);
+  card.style.display = matches && dateMatches ? '' : 'none';
+  if (matches && dateMatches) count++;
 });
 
 let result = document.getElementById('search-result');
