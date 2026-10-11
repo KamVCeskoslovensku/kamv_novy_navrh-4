@@ -229,3 +229,14 @@ html {
   padding: 12px;
   color: #333;
 }
+#search-when {
+  position: relative;
+}
+
+#search-when:invalid {
+  color: #777;
+}
+
+.search-box label[for="search-when"] {
+  display: none;
+}
