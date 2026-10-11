@@ -5,6 +5,7 @@
     "krajina": "Slovensko",
     "datum": "2026-10-17",
     "kategoria": "Festival",
+    "lat": 48.1486, "lon": 17.1077,
     "popis": "Ukážkové podujatie na otestovanie našej stránky."
   },
   {
@@ -13,6 +14,7 @@
   "krajina": "Česko",
   "datum": "2026-10-18",
   "kategoria": "Koncert",
+    "lat": 50.0755, "lon": 14.4378,
   "popis": "Testovacie podujatie na overenie vyhľadávania."
 }
 ]
