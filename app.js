@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async () => {
+udocument.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
@@ -68,6 +68,7 @@ if (!result) {
 result.textContent = count
   ? `Našli sme ${count} podujatí na našej stránke.`
   : 'Zatiaľ nemáme podujatie podľa vášho výberu.';
+ document.getElementById('event-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // Tlačidlo mapy.
