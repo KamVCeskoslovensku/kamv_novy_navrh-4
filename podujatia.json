@@ -26,5 +26,15 @@
   "lat": 49.1662,
   "lon": 20.1340,
   "popis": "Ukážkový turistický výlet vo Vysokých Tatrách."
+},
+  {
+  "nazov": "Rytierske dni na hrade – ukážka",
+  "mesto": "Beckov",
+  "krajina": "Slovensko",
+  "datum": "2026-10-17",
+  "kategoria": "Historické podujatie",
+  "lat": 48.7906,
+  "lon": 17.8981,
+  "popis": "Skúšobný záznam na overenie vyhľadávania."
 }
 ]
