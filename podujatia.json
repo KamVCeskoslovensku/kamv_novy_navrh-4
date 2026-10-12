@@ -36,5 +36,15 @@
   "lat": 48.7906,
   "lon": 17.8981,
   "popis": "Skúšobný záznam na overenie vyhľadávania."
+},
+{
+  "nazov": "Jesenný jarmok v Trnave",
+  "mesto": "Trnava",
+  "krajina": "Slovensko",
+  "datum": "2026-10-24",
+  "kategoria": "Jarmok",
+  "lat": 48.3774,
+  "lon": 17.5872,
+  "popis": "Skúšobný záznam na testovanie vyhľadávania."
 }
 ]
