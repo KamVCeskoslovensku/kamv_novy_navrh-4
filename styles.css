@@ -238,5 +238,18 @@ html {
 }
 
 .search-box label[for="search-when"] {
-  display: none;
+  display: block;
+}
+.search-box {
+  position: relative;
+}
+
+.search-box label[for="search-when"] {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  background: #f1f3f5;
+  color: #777;
+  padding: 12px;
+  border-radius: 10px;
 }
