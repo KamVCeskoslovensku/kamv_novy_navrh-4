@@ -245,11 +245,11 @@ html {
 }
 
 .search-box label[for="search-when"] {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  background: #f1f3f5;
-  color: #777;
-  padding: 12px;
-  border-radius: 10px;
+  position: static;
+  display: block;
+  width: 100%;
+  color: #203b39;
+  background: transparent;
+  padding: 0;
+  font-weight: 600;
 }
