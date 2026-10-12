@@ -39,15 +39,25 @@ const najdene = podujatia.filter(p =>
   (!where || (p.mesto + ' ' + p.krajina).toLocaleLowerCase('sk').includes(where.toLocaleLowerCase('sk'))) &&
   (!when || p.datum === when)
 );
-
-    cards.forEach(card => {
-  const matches = !text || text.split(' ').every(word =>
-    card.textContent.toLocaleLowerCase('sk').includes(word)
-  );
-  const dateMatches = !selectedDate || card.textContent.includes(selectedDate);
-  card.style.display = matches && dateMatches ? '' : 'none';
-  if (matches && dateMatches) count++;
-});
+console.log('Nájdené podujatia:', najdene);
+    const zoznam = document.querySelector('.event-list');
+if (zoznam) {
+  zoznam.innerHTML = '';
+  najdene.forEach(p => {
+    const karta = document.createElement('article');
+    karta.className = 'event-card';
+    karta.innerHTML = `
+      <h3></h3>
+      <p></p>
+      <span class="event-tag"></span>
+    `;
+    karta.querySelector('h3').textContent = p.nazov;
+    karta.querySelector('p').textContent = `${p.mesto} • ${p.datum}`;
+    karta.querySelector('.event-tag').textContent = p.kategoria;
+    zoznam.appendChild(karta);
+  });
+  count = najdene.length;
+}
 
 let result = document.getElementById('search-result');
 if (!result) {
