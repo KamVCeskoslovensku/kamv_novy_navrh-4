@@ -16,5 +16,15 @@
   "kategoria": "Koncert",
     "lat": 50.0755, "lon": 14.4378,
   "popis": "Testovacie podujatie na overenie vyhľadávania."
+},
+  {
+  "nazov": "Jesenný výlet do Tatier",
+  "mesto": "Vysoké Tatry",
+  "krajina": "Slovensko",
+  "datum": "2026-10-24",
+  "kategoria": "Turistika",
+  "lat": 49.1662,
+  "lon": 20.1340,
+  "popis": "Ukážkový turistický výlet vo Vysokých Tatrách."
 }
 ]
