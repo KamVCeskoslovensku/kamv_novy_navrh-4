@@ -40,7 +40,7 @@ const najdene = podujatia.filter(p =>
   (!when || p.datum === when)
 );
 console.log('Nájdené podujatia:', najdene);
-    const zoznam = document.querySelector('.event-list');
+    const zoznam = document.querySelector('#event-list');
 if (zoznam) {
   zoznam.innerHTML = '';
   najdene.forEach(p => {
