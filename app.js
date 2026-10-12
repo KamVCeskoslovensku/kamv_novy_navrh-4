@@ -1,4 +1,4 @@
-udocument.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
