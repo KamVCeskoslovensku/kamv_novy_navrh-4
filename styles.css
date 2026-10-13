@@ -263,3 +263,10 @@ html {
 #search-when {
   padding-left: 230px;
 }
+#mapa-podujati {
+  width: 100%;
+  height: 350px;
+  min-height: 350px;
+  border-radius: 18px;
+  overflow: hidden;
+}
