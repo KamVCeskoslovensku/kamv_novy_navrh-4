@@ -217,4 +217,5 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
+  setTimeout(() => mapa.invalidateSize(), 300);
 }
