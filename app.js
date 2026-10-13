@@ -217,5 +217,6 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
+ L.marker([48.1486, 17.1077]).addTo(mapa).bindPopup('📍 Bratislava');
   setTimeout(() => mapa.invalidateSize(), 300);
 }
