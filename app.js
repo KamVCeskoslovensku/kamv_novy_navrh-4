@@ -209,3 +209,12 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
     { enableHighAccuracy: false, timeout: 15000 }
   );
 });
+const mapaElement = document.getElementById('mapa-podujati');
+
+if (mapaElement && typeof L !== 'undefined') {
+  const mapa = L.map('mapa-podujati').setView([49.2, 17.0], 7);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(mapa);
+}
