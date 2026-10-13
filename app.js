@@ -233,7 +233,7 @@ podujatia.forEach(p => {
       fillOpacity: 0.9
     })
       .addTo(mapa)
-      .bindPopup(`${p.nazov} – ${p.mesto} (${p.datum})`);
+      .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}`);
   }
 });
   setTimeout(() => mapa.invalidateSize(), 300);
