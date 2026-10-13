@@ -213,6 +213,7 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
 const mapaElement = document.getElementById('mapa-podujati');
 
 if (mapaElement && typeof L !== 'undefined') {
+  alert('TEST: Kód mapy sa spustil');
   const mapa = L.map('mapa-podujati').setView([49.2, 17.0], 7);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
