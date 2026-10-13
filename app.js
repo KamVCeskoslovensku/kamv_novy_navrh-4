@@ -217,11 +217,21 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
-  L.circleMarker([48.1486, 17.1077], { radius: 10, color: 'red' }).addTo(mapa);
- podujatia.forEach(p => {
+ L.circleMarker([48.1486, 17.1077], {
+  radius: 10,
+  color: 'red',
+  fillColor: 'red',
+  fillOpacity: 0.8
+}).addTo(mapa);
 
+podujatia.forEach(p => {
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
-    L.marker([p.lat, p.lon])
+    L.circleMarker([p.lat, p.lon], {
+      radius: 8,
+      color: 'blue',
+      fillColor: 'blue',
+      fillOpacity: 0.9
+    })
       .addTo(mapa)
       .bindPopup(`${p.nazov} – ${p.mesto} (${p.datum})`);
   }
