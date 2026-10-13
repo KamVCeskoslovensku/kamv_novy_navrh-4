@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
 const podujatia = await fetch('podujatia.json').then(response => response.json());
+  alert('Načítaných podujatí: ' + podujatia.length);
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
