@@ -217,6 +217,12 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
- L.marker([48.1486, 17.1077]).addTo(mapa).bindPopup('📍 Bratislava');
+ podujatia.forEach(p => {
+  if (typeof p.lat === 'number' && typeof p.lon === 'number') {
+    L.marker([p.lat, p.lon])
+      .addTo(mapa)
+      .bindPopup(`${p.nazov} – ${p.mesto} (${p.datum})`);
+  }
+});
   setTimeout(() => mapa.invalidateSize(), 300);
 }
