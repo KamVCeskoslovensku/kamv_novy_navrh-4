@@ -226,6 +226,10 @@ if (mapaElement && typeof L !== 'undefined') {
 }).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
 podujatia.forEach(p => {
+  alert(
+  p.nazov + ': ' +
+  p.lat + ', ' + p.lon
+);
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
     L.circleMarker([p.lat, p.lon], {
       radius: 8,
