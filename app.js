@@ -217,7 +217,9 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
+  L.circleMarker([48.1486, 17.1077], { radius: 10, color: 'red' }).addTo(mapa);
  podujatia.forEach(p => {
+
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
     L.marker([p.lat, p.lon])
       .addTo(mapa)
