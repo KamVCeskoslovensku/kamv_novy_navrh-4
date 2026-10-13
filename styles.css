@@ -270,3 +270,7 @@ html {
   border-radius: 18px;
   overflow: hidden;
 }
+.leaflet-attribution-flag {
+  display: none !important;
+  background-image: none !important;
+}
