@@ -222,7 +222,7 @@ if (mapaElement && typeof L !== 'undefined') {
   color: 'red',
   fillColor: 'red',
   fillOpacity: 0.8
-}).addTo(mapa);
+}).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
 podujatia.forEach(p => {
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
