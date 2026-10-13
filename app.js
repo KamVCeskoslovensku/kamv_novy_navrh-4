@@ -237,5 +237,15 @@ podujatia.forEach(p => {
       .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}`);
   }
 });
-  setTimeout(() => mapa.invalidateSize(), 300);
+  setTimeout(() => {
+  mapa.invalidateSize();
+
+  const body = podujatia
+    .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon))
+    .map(p => [p.lat, p.lon]);
+
+  if (body.length > 0) {
+    mapa.fitBounds(body, { padding: [30, 30] });
+  }
+}, 300);
 }
