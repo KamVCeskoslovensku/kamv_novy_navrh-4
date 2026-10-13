@@ -274,3 +274,11 @@ html {
   display: none !important;
   background-image: none !important;
 }
+.leaflet-control-attribution .leaflet-attribution-flag {
+    display: none !important;
+}
+
+.leaflet-control-attribution a[href*="leafletjs.com"] {
+    background-image: none !important;
+    padding-left: 0 !important;
+}
