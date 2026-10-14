@@ -210,7 +210,11 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
     { enableHighAccuracy: false, timeout: 15000 }
   );
 });
-const mapaElement = document.getElementById('mapa-podujati');
+document.addEventListener('DOMContentLoaded', async () => {
+  const podujatia = await fetch('podujatia.json')
+    .then(response => response.json());
+
+  const mapaElement = document.getElementById('mapa-podujati');
 
 if (mapaElement && typeof L !== 'undefined') {
   alert('TEST: Kód mapy sa spustil');
@@ -254,3 +258,4 @@ podujatia.forEach(p => {
   }
 }, 300);
 }
+ }); 
