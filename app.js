@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
 const podujatia = await fetch('podujatia.json').then(response => response.json());
-  alert('Načítaných podujatí: ' + podujatia.length);
+  
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mapaElement = document.getElementById('mapa-podujati');
 
 if (mapaElement && typeof L !== 'undefined') {
-  alert('TEST: Kód mapy sa spustil');
+  
   const mapa = L.map('mapa-podujati').setView([49.2, 17.0], 7);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -231,10 +231,6 @@ if (mapaElement && typeof L !== 'undefined') {
 }).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
 podujatia.forEach(p => {
-  alert(
-  p.nazov + ': ' +
-  p.lat + ', ' + p.lon
-);
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
     L.circleMarker([p.lat, p.lon], {
       radius: 8,
