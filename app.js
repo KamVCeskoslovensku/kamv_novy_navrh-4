@@ -230,7 +230,7 @@ if (mapaElement && typeof L !== 'undefined') {
   fillOpacity: 0.8
 }).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
-podujatia.forEach(p => {
+podujatia.forEach((p, index) => {
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
     L.circleMarker([p.lat, p.lon], {
       radius: 8,
@@ -239,7 +239,7 @@ podujatia.forEach(p => {
       fillOpacity: 0.9
     })
       .addTo(mapa)
-      .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}<br><a href="/podujatie.html?id=${p.id}">👉 Viac informácií</a>`, { maxWidth: 220, autoPan: true, autoPanPadding: [80, 80] });
+      .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}<br><a href="/podujatie.html">👉 Viac informácií</a>`, { maxWidth: 220, autoPan: true, autoPanPadding: [80, 80] });
   }
 });
   setTimeout(() => {
