@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail podujatia | KamV ČESKOSLOVENSKU</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .detail {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .detail h1 { color: #174c40; }
+    .back { color: #174c40; }
+  </style>
+</head>
+<body>
+  <main class="detail">
+    <a class="back" href="index.html">← Späť na hlavnú stránku</a>
+    <div id="detail">
+      <p>Načítavam podujatie...</p>
+    </div>
+  </main>
+
+  <script>
+    async function nacitajPodujatie() {
+      const detail = document.getElementById('detail');
+      const id = new URLSearchParams(location.search).get('id');
+
+      try {
+        const response = await fetch('podujatia.json');
+        if (!response.ok) throw new Error('Načítanie zlyhalo');
+
+        const podujatia = await response.json();
+        const p = podujatia[Number(id)];
+
+        if (id === null || !Number.isInteger(Number(id)) || !p) {
+          detail.textContent = 'Podujatie sa nenašlo.';
+          return;
+        }
+
+        detail.replaceChildren();
+
+        const nadpis = document.createElement('h1');
+        nadpis.textContent = p.nazov;
+
+        const miesto = document.createElement('p');
+        miesto.textContent = '📍 ' + p.mesto + ', ' + p.krajina;
+
+        const datum = document.createElement('p');
+        datum.textContent = '📅 ' + p.datum;
+
+        const kategoria = document.createElement('p');
+        kategoria.textContent = '🎫 ' + p.kategoria;
+
+        const popis = document.createElement('p');
+        popis.textContent = p.popis || 'Popis zatiaľ nie je dostupný.';
+
+        detail.append(nadpis, miesto, datum, kategoria, popis);
+      } catch (error) {
+        detail.textContent = 'Nepodarilo sa načítať podujatie.';
+      }
+    }
+
+    nacitajPodujatie();
+  </script>
+</body>
+</html>
