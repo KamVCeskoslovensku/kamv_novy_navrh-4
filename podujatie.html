@@ -38,7 +38,8 @@
         const podujatia = await response.json();
         const p = podujatia[Number(id)];
 
-        if (id === null || !Number.isInteger(Number(id)) || !p) {
+if (id === null || !Number.isInteger(Number(id)) || !p) {
+
           detail.textContent = 'Podujatie sa nenašlo.';
           return;
         }
