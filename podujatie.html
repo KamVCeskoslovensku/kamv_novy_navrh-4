@@ -36,9 +36,9 @@
         if (!response.ok) throw new Error('Načítanie zlyhalo');
 
         const podujatia = await response.json();
-        const p = podujatia[Number(id)];
+        const p = podujatia.find(p => p.nazov === id);
 
-if (id === null || !Number.isInteger(Number(id)) || !p) {
+if (id === null || !p) {
 
           detail.textContent = 'Podujatie sa nenašlo.';
           return;
