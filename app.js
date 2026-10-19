@@ -1,3 +1,19 @@
+const SUPABASE_URL = 'https://ijctkszgvhinoubtbyfb.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_behBeiZHFJxXRVL2L6VueQ_EFMm-5DY';
+const SUPABASE_TABLE = 'udalosti';
+const SUPABASE_API = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`;
+const SUPABASE_HEADERS = {
+  apikey: SUPABASE_KEY,
+  Authorization: `Bearer ${SUPABASE_KEY}`
+};
+async function nacitajUdalosti() {
+  const response = await fetch(SUPABASE_API + '?select=*', {
+    headers: SUPABASE_HEADERS
+  });
+  if (!response.ok) throw new Error('Nepodarilo sa načítať udalosti');
+  return await response.json();
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
@@ -211,8 +227,8 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
   );
 });
 document.addEventListener('DOMContentLoaded', async () => {
-  const podujatia = await fetch('podujatia.json')
-    .then(response => response.json());
+const podujatia = await nacitajUdalosti();
+  
 
   const mapaElement = document.getElementById('mapa-podujati');
 
