@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
 const podujatia = await nacitajUdalosti();
-  
+  const dnes = new Date().toLocaleDateString('sv-SE');
+const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
@@ -130,7 +131,7 @@ nacitajUdalosti()
     const zoznam = document.querySelector('.event-grid');
     if (!zoznam) return;
 zoznam.innerHTML = '';
-    podujatia.forEach(p => {
+    podujatia.filter(p => p.datum >= new Date().toLocaleDateString('sv-SE')).forEach(p => {
       const karta = document.createElement('article');
       karta.className = 'event-card';
       karta.innerHTML = `
