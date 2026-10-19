@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-fetch('podujatia.json')
-  .then(response => response.json())
+nacitajUdalosti()
+
   .then(podujatia => {
     const zoznam = document.querySelector('.event-grid');
     if (!zoznam) return;
