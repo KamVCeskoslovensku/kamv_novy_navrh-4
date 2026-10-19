@@ -1,6 +1,6 @@
 const SUPABASE_URL = 'https://ijctkszgvhinoubtbyfb.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_behBeiZHFJxXRVL2L6VueQ_EFMm-5DY';
-const SUPABASE_TABLE = 'udalosti';
+const SUPABASE_TABLE = 'events';
 const SUPABASE_API = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`;
 const SUPABASE_HEADERS = {
   apikey: SUPABASE_KEY,
@@ -11,7 +11,15 @@ async function nacitajUdalosti() {
     headers: SUPABASE_HEADERS
   });
   if (!response.ok) throw new Error('Nepodarilo sa načítať udalosti');
-  return await response.json();
+  const data = await response.json();
+return data.map(p => ({
+  ...p,
+  nazov: p.title,
+  datum: p.start_date,
+  mesto: p.city,
+  kategoria: p.category,
+  popis: p.description || ''
+}));
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
