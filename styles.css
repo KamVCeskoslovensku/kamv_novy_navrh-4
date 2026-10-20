@@ -404,3 +404,8 @@ html {
 .article-photo.a2 {
   background-image: url("wide_cinematic_landscape_scene_a_dramatic_high.png");
 }
+.destination-photo.d1 {
+  background-image: url("SEM_DAME_FOTKU_KRIVANA");
+  background-size: cover;
+  background-position: center;
+}
