@@ -326,3 +326,49 @@ html {
     font-size: 16px;
   }
 }
+
+/* Tipy a inspiracia */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.article-grid article {
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e5e9e7;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.article-grid article h3 {
+  padding: 16px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.article-photo {
+  height: 160px;
+  background-color: #e8f1ed;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 700px) {
+  .article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .article-grid article h3 {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .article-photo {
+    height: 110px;
+  }
+}
