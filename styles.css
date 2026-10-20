@@ -397,3 +397,7 @@ html {
 .article-photo.a6 {
   background-image: url("https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800");
 }
+
+.article-photo.a5 {
+  background-image: url("FullSizeRender.jpeg");
+}
