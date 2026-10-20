@@ -282,3 +282,47 @@ html {
     background-image: none !important;
     padding-left: 0 !important;
 }
+
+/* Karty a rozlozenie na mobile */
+.content-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  box-sizing: border-box;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.destination-card {
+  min-width: 0;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e9e7;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+@media (max-width: 700px) {
+  .content-section {
+    padding: 24px 16px;
+  }
+
+  .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .destination-card {
+    padding: 12px;
+  }
+
+  .destination-card h3 {
+    font-size: 16px;
+  }
+}
