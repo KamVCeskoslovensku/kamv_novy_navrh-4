@@ -417,3 +417,9 @@ html {
   background-position: center;
   height: 180px;
 }
+.destination-photo.d3 {
+  background-image: url("6CF32931-1CB6-48C8-A0AD-CB7CD152C93C.png");
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+}
