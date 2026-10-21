@@ -411,3 +411,9 @@ html {
   background-position: center;
   height: 180px;
 }
+.destination-photo.d2 {
+  background-image: url("IMG_9227.webp");
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+}
