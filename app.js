@@ -281,3 +281,13 @@ podujatia.forEach((p, index) => {
 }, 300);
 }
  }); 
+// Prihlasovanie cez Supabase
+const SUPABASE_AUTH_URL = `${SUPABASE_URL}/auth/v1`;
+async function prihlasitSa(email) {
+    const response = await fetch(`${SUPABASE_AUTH_URL}/otp`, {
+          method: 'POST',
+          headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+    if (!response.ok) throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
+  }
