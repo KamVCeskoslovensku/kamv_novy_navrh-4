@@ -287,7 +287,12 @@ async function prihlasitSa(email) {
     const response = await fetch(`${SUPABASE_AUTH_URL}/otp`, {
           method: 'POST',
           headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({
+  email,
+  create_user: true,
+  gotrue_meta_security: {},
+  email_redirect_to: 'https://kamvceskoslovensku.github.io/kamv_novy_navrh-4/'
+}),
         });
     if (!response.ok) throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
   }
