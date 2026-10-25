@@ -5,6 +5,12 @@
   color: white;
   padding: 60px 24px;
 }
+.hero-photo {
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-position: center;
+  background-size: cover;
+}
 /* Nový vzhľad KamV */
 body {
   background: #ffffff;
