@@ -452,3 +452,21 @@ html {
   background-position: center;
   height: 180px;
 }
+/* Kompaktnejšie vyhľadávanie na mobile */
+@media (max-width: 768px) {
+  .hero-photo {
+    padding: 35px 16px;
+  }
+
+  .search-box {
+    padding: 14px !important;
+    gap: 8px !important;
+  }
+
+  .search-box input,
+  .search-box select,
+  .search-box button {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+}
