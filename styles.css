@@ -116,7 +116,7 @@ html {
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
-  margin: 28px 0 20px;
+  margin: 12px 0 10px;
   padding: 8px;
   background: white;
   color: #203b39;
@@ -124,7 +124,7 @@ html {
 }
 .search-box > div {
   flex: 1 1 160px;
-  padding: 10px;
+  padding: 6px;
 }
 .search-box span {
   display: block;
