@@ -296,3 +296,46 @@ async function prihlasitSa(email) {
         });
     if (!response.ok) throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
   }
+// Dokončenie prihlásenia cez e-mailový odkaz Supabase
+async function skontrolujPrihlasenie() {
+  const params = new URLSearchParams(window.location.hash.substring(1));
+  const accessToken = params.get('access_token');
+  const refreshToken = params.get('refresh_token');
+
+  if (accessToken && refreshToken) {
+    localStorage.setItem('kamv_access_token', accessToken);
+    localStorage.setItem('kamv_refresh_token', refreshToken);
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+
+  const token = localStorage.getItem('kamv_access_token');
+  if (!token) return;
+
+  try {
+    const response = await fetch(`${SUPABASE_AUTH_URL}/user`, {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      localStorage.removeItem('kamv_access_token');
+      localStorage.removeItem('kamv_refresh_token');
+      return;
+    }
+
+    const user = await response.json();
+    const tlacidlo = [...document.querySelectorAll('button')]
+      .find(b => b.textContent.trim() === 'Prihlásiť');
+
+    if (tlacidlo) {
+      tlacidlo.textContent = '👤 Môj účet';
+      tlacidlo.onclick = () => alert(`Prihlásený účet: ${user.email}`);
+    }
+  } catch (error) {
+    console.error('Chyba overenia prihlásenia:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
