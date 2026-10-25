@@ -284,7 +284,7 @@ podujatia.forEach((p, index) => {
 // Prihlasovanie cez Supabase
 const SUPABASE_AUTH_URL = `${SUPABASE_URL}/auth/v1`;
 async function prihlasitSa(email) {
-    const response = await fetch(`${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent('https://kamvceskoslovensku.github.io/kamv_novy_navrh-4/')}`, {
+        const response = await fetch(`${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent(window.location.href.split('#')[0])}`, {
           method: 'POST',
           headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
           body: JSON.stringify({
