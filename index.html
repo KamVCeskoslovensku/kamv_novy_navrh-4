@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KamV Československu – Objavuj zážitky</title>
+  <meta name="description" content="Objavuj podujatia, výlety a krásne miesta v Česku a na Slovensku.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f8f5;
+      color: #183d35;
+    }
+    .uvod {
+      min-height: 100vh;
+      padding: 35px 18px 45px;
+      text-align: center;
+      background: linear-gradient(160deg, #e3f2ec, #fff8e8);
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #27856b;
+    }
+    h1 {
+      font-size: clamp(32px, 7vw, 58px);
+      margin: 28px auto 12px;
+      max-width: 850px;
+    }
+    .podnadpis {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .mapy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .krajina {
+      background: white;
+      border-radius: 22px;
+      padding: 18px 10px;
+      box-shadow: 0 8px 25px #183d3515;
+      text-decoration: none;
+      color: #183d35;
+    }
+    .krajina svg {
+      width: 100%;
+      height: 170px;
+    }
+    .krajina h2 {
+      margin: 8px 0;
+      font-size: 21px;
+    }
+    .qr {
+      margin: 25px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 18px;
+      display: inline-block;
+    }
+    .qr img {
+      width: 115px;
+      height: 115px;
+      display: block;
+    }
+    .qr small {
+      display: block;
+      margin-top: 8px;
+    }
+    .tlacidlo {
+      display: block;
+      max-width: 330px;
+      margin: 5px auto;
+      padding: 18px;
+      border-radius: 30px;
+      background: #e7b85b;
+      color: #183d35;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 19px;
+    }
+    @media (max-width: 380px) {
+      .krajina { padding: 12px 5px; }
+      .krajina svg { height: 125px; }
+      .krajina h2 { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="uvod">
+    <div class="logo">📍 KamV ČESKOSLOVENSKU</div>
+
+    <h1>Objavuj zážitky v Česku a na Slovensku</h1>
+
+    <p class="podnadpis">
+      Dve krajiny, nekonečne veľa zážitkov.
+      Vyber si, kam sa chceš vybrať.
+    </p>
+
+    <div class="mapy">
+      <a class="krajina" href="hladat.html">
+        <svg viewBox="0 0 300 190" role="img" aria-label="Ilustračná mapa Česka">
+          <path d="M20 90 L42 65 L70 70 L85 40 L118 49 L145 27 L172 50 L205 38 L230 60 L275 68 L282 105 L254 130 L220 123 L194 157 L158 146 L126 164 L91 142 L60 145 L35 120 Z"
+            fill="#78bca5" stroke="#2a7963" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="150" cy="95" r="8" fill="#e8b557"/>
+        </svg>
+        <h2>🇨🇿 Česko</h2>
+        <span>Objavovať →</span>
+      </a>
+
+      <a class="krajina" href="hladat.html">
+        <svg viewBox="0 0 300 190" role="img" aria-label="Ilustračná mapa Slovenska">
+          <path d="M15 104 L48 80 L80 87 L107 65 L142 77 L172 54 L207 64 L239 48 L282 77 L273 109 L244 120 L215 115 L186 139 L150 131 L118 145 L83 127 L47 135 Z"
+            fill="#e9c879" stroke="#bc9240" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="151" cy="104" r="8" fill="#328c74"/>
+        </svg>
+        <h2>🇸🇰 Slovensko</h2>
+        <span>Objavovať →</span>
+      </a>
+    </div>
+
+    <div class="qr">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https%3A%2F%2Fkamvceskoslovensku.github.io%2Fkamv_novy_navrh-4%2F"
+        alt="QR kód webovej stránky KamV Československu">
+      <small>Naskenuj a objavuj</small>
+    </div>
+
+    <a class="tlacidlo" href="hladat.html">
+      🔎 Prejsť na vyhľadávanie
+    </a>
+  </main>
+</body>
+</html>
