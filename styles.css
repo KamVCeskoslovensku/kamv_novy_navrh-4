@@ -545,3 +545,50 @@ html {
   flex-direction: column;
   gap: 8px;
 }
+
+/* Novy vzhlad uvodnej stranky */
+.hero-photo .search-box {
+  max-width: 480px;
+  margin: 0;
+}
+
+.search-actions-qr .search-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.search-actions-qr .search-buttons button {
+  width: 100%;
+  min-height: 52px;
+  font-size: 13px;
+  padding: 8px;
+}
+
+.search-actions-qr .homepage-qr {
+  background: white;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.hero-photo .quick-tags a {
+  display: inline-block;
+  background: white;
+  color: #203b34 !important;
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  text-shadow: none !important;
+}
+
+@media (max-width: 480px) {
+  .search-actions-qr {
+    grid-template-columns: minmax(0, 1fr) 110px !important;
+    gap: 10px;
+  }
+
+  .search-actions-qr .search-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+  
