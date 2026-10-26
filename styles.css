@@ -522,3 +522,26 @@ html {
   color: #203b34 !important;
   text-shadow: none !important;
 }
+/* Nové rozloženie vyhľadávania a QR */
+.search-box {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.search-actions-qr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-actions-qr .homepage-qr {
+  max-width: 110px;
+}
+
+.search-actions-qr .search-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
