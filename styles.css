@@ -515,3 +515,10 @@ html {
     justify-self: center;
   }
 }
+/* Tmavy text oblubenych kategorii */
+.hero-photo .quick-tags,
+.hero-photo .quick-tags span,
+.hero-photo .quick-tags a {
+  color: #203b34 !important;
+  text-shadow: none !important;
+}
