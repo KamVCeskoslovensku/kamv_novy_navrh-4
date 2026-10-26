@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kamvceskoslovensku.github.io/kamv_novy_navrh-4/sitemap.xml
