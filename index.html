@@ -7,92 +7,21 @@
 <title>KamV ČESKOSLOVENSKU</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:white;background:#142c40}
-main{
- min-height:100vh;text-align:center;padding:28px 16px 35px;
- background:
- linear-gradient(180deg,rgba(7,24,43,.45),rgba(7,24,43,.15) 45%,rgba(5,18,28,.85)),
- url('wide_cinematic_landscape_scene_a_dramatic_high.png') center/cover fixed;
-}
-.logo{font-size:clamp(29px,6vw,58px);font-weight:900;text-shadow:0 3px 12px #172c43}
-.logo span{color:#ffdd60}
-.subtitle{font-size:12px;letter-spacing:2px;line-height:1.8;margin:18px auto 38px}
-.krajiny{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
-.karta{background:rgba(255,255,255,.94);color:#17304a;border-radius:24px;padding:25px 18px;width:min(43%,280px);min-width:145px;box-shadow:0 12px 30px #0005}
-.symbol{font-size:62px;margin:12px 0}
-.karta h2{font-size:23px;margin:8px 0 20px}
-a.tlacidlo{display:inline-block;text-decoration:none;color:white;font-weight:bold;padding:13px 25px;border-radius:30px}
-.cesko{border:3px solid #2775b7}
-.slovensko{border:3px solid #d94b4b}
-.modre{background:#2479c5}
-.cervene{background:#d84646}
-.hlavne{display:inline-block;background:#f9c943;color:#26313b;text-decoration:none;font-weight:900;padding:18px 26px;border-radius:40px;margin:35px auto;box-shadow:0 6px 18px #0005}
-.qr{margin:10px 0 35px}
-.qr img{background:white;padding:8px;border-radius:10px;width:116px;height:116px}
-.qr p{font-weight:bold;margin:8px}
-.kategorie{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:25px auto;max-width:850px}
-.kategorie a{color:white;text-decoration:none;background:#132b40b8;border:1px solid #ffffff77;border-radius:15px;padding:15px 12px;min-width:130px;font-size:13px;font-weight:bold}
-.kategorie b{display:block;font-size:27px;margin-bottom:8px}
-@media(max-width:400px){.karta{padding:15px 8px}.symbol{font-size:45px}.karta h2{font-size:18px}.subtitle{font-size:10px}.tlacidlo{padding:11px 16px!important}}
+body{margin:0;background:#101a16;font-family:Arial,sans-serif}
+main{position:relative;width:100%;max-width:750px;margin:auto}
+img{display:block;width:100%;height:auto}
+a{position:absolute;display:block;z-index:2}
+.cesko{left:3%;top:55%;width:48%;height:17%}
+.slovensko{left:51%;top:55%;width:47%;height:17%}
+.vsetko{left:28%;top:73%;width:68%;height:10%}
 </style>
 </head>
 <body>
 <main>
-<div class="logo">KamV <span>ČESKOSLOVENSKU</span></div>
-<p class="subtitle">PODUJATIA · VÝLETY · TURISTICKÉ MIESTA<br>A TIPY NA VOĽNÝ ČAS</p>
-
-<div class="krajiny">
-<section class="karta cesko">
-<div class="symbol">🏰🇨🇿</div>
-<h2>ČESKO</h2>
-<a class="tlacidlo modre" href="hladat.html">OBJAVIŤ</a>
-</section>
-<section class="karta slovensko">
-<div class="symbol">🏰🇸🇰</div>
-<h2>SLOVENSKO</h2>
-<a class="tlacidlo cervene" href="hladat.html">OBJAVIŤ</a>
-</section>
-</div>
-
-<a class="hlavne" href="hladat.html">Objavovať celé Československo</a>
-
-<div class="qr">
-<img alt="QR kód stránky" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fkamvceskoslovensku.github.io%2Fkamv_novy_navrh-4%2F">
-<p>Naskenuj ma 📱</p>
-</div>
-
-<nav class="kategorie">
-<a href="hladat.html"><b>🎉</b>PODUJATIA</a>
-<a href="hladat.html"><b>🥾</b>VÝLETY</a>
-<a href="hladat.html"><b>🏞️</b>TURISTICKÉ MIESTA</a>
-<a href="hladat.html"><b>🚴</b>CYKLOTRASY</a>
-<a href="hladat.html"><b>🏰</b>HRADY A ZÁMKY</a>
-<a href="hladat.html"><b>⛺</b>KEMPINGY</a>
-</nav>
+<img src="A976D5A9-0BD2-4F36-9D67-83F005DF683F.png" alt="KamV ČESKOSLOVENSKU">
+<a class="cesko" href="hladat.html" aria-label="Objaviť Česko"></a>
+<a class="slovensko" href="hladat.html" aria-label="Objaviť Slovensko"></a>
+<a class="vsetko" href="hladat.html" aria-label="Objavovať celé Československo"></a>
 </main>
- <style>
-body > main { display: none !important; }
-body { margin: 0; background: #111; }
-.novy-uvod { position: relative; width: 100%; max-width: 1024px; margin: auto; }
-  html, body { min-height: 0; }
-.novy-uvod img { display: block; width: 100%; height: auto; }
-.novy-uvod a { position: absolute; display: block; }
-  .novy-uvod {
-  background: #111;
-}
-</style>
-<div class="novy-uvod">
-  <img src="42CDB596-2C2B-41F7-B07D-230334103051.png" alt="KamV Československu">
-  <a href="hladat.html?stat=cesko" aria-label="Objaviť Česko" style="left:16%;top:48%;width:25%;height:6%"></a>
-  <a href="hladat.html?stat=slovensko" aria-label="Objaviť Slovensko" style="left:61%;top:48%;width:25%;height:6%"></a>
-  <a href="hladat.html" aria-label="Objavovať celé Československo" style="left:13%;top:59%;width:74%;height:7%"></a>
-  <a href="hladat.html" aria-label="Podujatia" style="left:5%;top:89%;width:12%;height:9%"></a>
-  <a href="hladat.html" aria-label="Výlety" style="left:18%;top:89%;width:12%;height:9%"></a>
-  <a href="hladat.html" aria-label="Turistické miesta" style="left:31%;top:89%;width:17%;height:9%"></a>
-  <a href="hladat.html" aria-label="Cyklotrasy" style="left:49%;top:89%;width:14%;height:9%"></a>
-  <a href="hladat.html" aria-label="Hrady a zámky" style="left:65%;top:89%;width:16%;height:9%"></a>
-  <a href="hladat.html" aria-label="Kempingy" style="left:84%;top:89%;width:12%;height:9%"></a>
-</div>
-
 </body>
 </html>
