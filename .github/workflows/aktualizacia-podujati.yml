@@ -1,0 +1,11 @@
+name: Aktualizacia podujati
+
+on:
+  workflow_dispatch:
+
+jobs:
+  kontrola:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kontrola nastavenia
+        run: echo "Priprava automatickeho kalendara"
