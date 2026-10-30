@@ -264,7 +264,7 @@ podujatia.forEach((p, index) => {
       fillOpacity: 0.9
     })
       .addTo(mapa)
-  .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}<br><a href="/podujatie.html?id=${encodeURIComponent(p.nazov)}">👉 Viac informácií</a>`, { maxWidth: 220, autoPan: true, autoPanPadding: [80, 80] });
+  .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}<br><a href="podujatie.html?id=${encodeURIComponent(p.nazov)}">👉 Viac informácií</a>`, { maxWidth: 220, autoPan: true, autoPanPadding: [80, 80] });
 
   }
 });
