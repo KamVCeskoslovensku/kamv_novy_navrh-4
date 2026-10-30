@@ -256,8 +256,8 @@ if (mapaElement && typeof L !== 'undefined') {
 }).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
 podujatia.forEach((p, index) => {
-  if (typeof p.lat === 'number' && typeof p.lon === 'number') {
-    L.circleMarker([p.lat, p.lon], {
+  if (typeof p.lat === 'number' && typeof p.lng === 'number') {
+    L.circleMarker([p.lat, p.lng], {
       radius: 8,
       color: 'blue',
       fillColor: 'blue',
@@ -272,8 +272,8 @@ podujatia.forEach((p, index) => {
   mapa.invalidateSize();
 
   const body = podujatia
-    .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon))
-    .map(p => [p.lat, p.lon]);
+    .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng))
+    .map(p => [p.lat, p.lng]);
 
   if (body.length > 0) {
     mapa.fitBounds(body, { padding: [30, 30] });
