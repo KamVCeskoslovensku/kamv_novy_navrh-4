@@ -711,27 +711,20 @@ html {
 }
 
 
-/* Všetkých 6 políčok má rovnakú šírku a výšku */
 @media (max-width: 699px) {
-  .hero-photo .search-box,
-  .hero-photo .search-actions-qr,
   .hero-photo .search-actions-qr .search-buttons {
     width: 100% !important;
     max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  .hero-photo .search-box input,
-  .hero-photo .search-box select,
-  .hero-photo .search-box button,
   .hero-photo .search-actions-qr .search-buttons button {
     width: 100% !important;
     height: 72px !important;
     min-height: 72px !important;
-    max-width: none !important;
     box-sizing: border-box !important;
+    margin: 0 !important;
   }
 }
 
