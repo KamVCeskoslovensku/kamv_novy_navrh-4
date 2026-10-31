@@ -52,6 +52,11 @@ if (p) {
   p.datum = p.start_date;
   p.kategoria = p.category;
   p.popis = p.description;
+  p.cas = p.start_time;
+p.miestoKonania = p.venue;
+p.adresa = p.address;
+p.cena = p.price;
+p.ucinkujuci = p.performers;
 }
 
 if (id === null || !p) {
@@ -77,7 +82,22 @@ if (id === null || !p) {
         const popis = document.createElement('p');
         popis.textContent = p.popis || 'Popis zatiaľ nie je dostupný.';
 
-        detail.append(nadpis, miesto, datum, kategoria, popis);
+      const dalsieInfo = document.createElement('div');
+
+[
+  ['🕒 Čas', p.cas],
+  ['🏛️ Miesto konania', p.miestoKonania],
+  ['📍 Adresa', p.adresa],
+  ['💶 Cena', p.cena],
+  ['🎤 Účinkujúci', p.ucinkujuci]
+].forEach(([nazov, hodnota]) => {
+  if (hodnota) {
+    const riadok = document.createElement('p');
+    riadok.textContent = nazov + ': ' + hodnota;
+    dalsieInfo.append(riadok);
+  }
+});
+        detail.append(nadpis, miesto, datum, kategoria, popis, dalsieInfo);
       } catch (error) {
         detail.textContent = 'Nepodarilo sa načítať podujatie.';
       }
