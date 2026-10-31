@@ -627,3 +627,17 @@ html {
     grid-template-columns: minmax(0, 1fr) 180px;
   }
 }
+
+/* Žlté tlačidlá na celú šírku */
+.hero-search-layout .search-buttons {
+  width: 100%;
+  max-width: none;
+}
+
+.hero-search-layout .search-buttons button {
+  display: block;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
