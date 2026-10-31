@@ -57,6 +57,7 @@ p.miestoKonania = p.venue;
 p.adresa = p.address;
 p.cena = p.price;
 p.ucinkujuci = p.performers;
+  p.vstupenky = p.ticket_url;
 }
 
 if (id === null || !p) {
@@ -94,9 +95,26 @@ if (id === null || !p) {
   if (hodnota) {
     const riadok = document.createElement('p');
     riadok.textContent = nazov + ': ' + hodnota;
+ 
     dalsieInfo.append(riadok);
   }
 });
+        
+if (p.vstupenky) {
+  const tlacidlo = document.createElement('a');
+  tlacidlo.textContent = '🎟️ Kúpiť vstupenky';
+  tlacidlo.href = p.vstupenky;
+  tlacidlo.target = '_blank';
+  tlacidlo.rel = 'noopener noreferrer';
+  tlacidlo.style.display = 'inline-block';
+  tlacidlo.style.padding = '12px 20px';
+  tlacidlo.style.backgroundColor = '#174c40';
+  tlacidlo.style.color = 'white';
+  tlacidlo.style.borderRadius = '8px';
+  tlacidlo.style.textDecoration = 'none';
+  dalsieInfo.append(tlacidlo);
+}
+
         detail.append(nadpis, miesto, datum, kategoria, popis, dalsieInfo);
       } catch (error) {
         detail.textContent = 'Nepodarilo sa načítať podujatie.';
