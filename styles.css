@@ -641,3 +641,16 @@ html {
   box-sizing: border-box;
 }
 
+/* Rovnaká šírka žltých tlačidiel ako políčok */
+.hero-photo .search-buttons,
+.hero-photo .search-buttons button {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.hero-photo .search-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
