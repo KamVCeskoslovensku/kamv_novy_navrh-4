@@ -667,4 +667,21 @@ html {
   width: 100% !important;
   max-width: none !important;
   box-sizing: border-box;
+  /* Mobil: žlté tlačidlá na celú šírku */
+@media (max-width: 699px) {
+  .hero-photo .search-actions-qr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100%;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons {
+    width: 100% !important;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons button {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
 }
