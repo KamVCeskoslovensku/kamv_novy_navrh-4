@@ -685,3 +685,27 @@ html {
   }
 }
 }
+
+/* Žlté tlačidlá rovnako široké ako biele políčka */
+@media (max-width: 699px) {
+  .hero-photo .search-actions-qr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons button {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
