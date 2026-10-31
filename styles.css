@@ -709,3 +709,11 @@ html {
     box-sizing: border-box !important;
   }
 }
+
+/* Presné zarovnanie žltých tlačidiel s bielymi políčkami */
+@media (max-width: 699px) {
+  .hero-photo .search-actions-qr {
+    width: calc(100% + 40px) !important;
+    margin-left: -20px !important;
+  }
+}
