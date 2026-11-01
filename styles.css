@@ -118,7 +118,7 @@ html {
   align-items: center;
   margin: 12px 0 10px;
   padding: 5px;
-  background: white;
+  background: transparent;
   color: #203b39;
   border-radius: 16px;
 }
