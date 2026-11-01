@@ -809,3 +809,39 @@ html {
     margin: 0 !important;
   }
 }
+/* Oprava mobilného vyhľadávania */
+@media (max-width: 699px) {
+
+  .hero-photo .search-box {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-photo .search-box input,
+  .hero-photo .search-box select {
+    width: 100% !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-photo #search-when {
+    padding: 12px !important;
+  }
+
+  .hero-photo .search-box label[for="search-when"] {
+    height: 72px !important;
+    min-height: 72px !important;
+    margin: 0 0 -72px 0 !important;
+    padding: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons button {
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 10px !important;
+  }
+}
