@@ -727,4 +727,21 @@ html {
     margin: 0 !important;
   }
 }
+/* Mobil – žlté tlačidlá zarovnané s bielymi políčkami */
+@media (max-width: 699px) {
+  .hero-photo .search-actions-qr {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 
+  .hero-photo .search-actions-qr .search-buttons {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-photo .search-actions-qr .search-buttons button {
+    width: 100% !important;
+    height: 72px !important;
+    box-sizing: border-box !important;
+  }
+}
