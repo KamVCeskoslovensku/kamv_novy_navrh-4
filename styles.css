@@ -271,9 +271,7 @@ html {
   z-index: 1;
   pointer-events: none;
 }
-#search-when {
-  padding-left: 230px;
-}
+
 #mapa-podujati {
   width: 100%;
   height: 350px;
