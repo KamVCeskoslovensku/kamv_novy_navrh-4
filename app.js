@@ -138,27 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-nacitajUdalosti()
-
-  .then(podujatia => {
-    const zoznam = document.querySelector('.event-grid');
-    if (!zoznam) return;
-zoznam.innerHTML = '';
-    podujatia.filter(p => p.datum >= new Date().toLocaleDateString('sv-SE')).forEach(p => {
-      const karta = document.createElement('article');
-      karta.className = 'event-card';
-      karta.innerHTML = `
-        <h3></h3>
-        <p></p>
-        <span class="event-tag"></span>
-      `;
-      karta.querySelector('h3').textContent = p.nazov;
-      karta.querySelector('p').textContent = `📍 ${p.mesto} | 📅 ${p.datum}`;
-      karta.querySelector('.event-tag').textContent = p.kategoria;
-      zoznam.appendChild(karta);
-    });
-  })
-  .catch(error => console.error('Chyba načítania podujatí:', error));
 
 // Akcie v mojom okolí – do 50 km
 document.getElementById('nearby-events')?.addEventListener('click', () => {
