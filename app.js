@@ -217,10 +217,30 @@ const blizke = podujatia
         }
 
         blizke.forEach(p => {
-          const karta = document.createElement('p');
-          karta.textContent = `${p.nazov} – ${p.mesto} – ${p.km.toFixed(1)} km – ${p.datum}`;
-          zoznam.appendChild(karta);
-        });
+  const karta = document.createElement('div');
+  karta.style.cssText = 'background:rgba(0,0,0,.65);padding:16px;margin:12px 0;border-radius:14px;color:white;';
+
+  const nazov = document.createElement('h3');
+  nazov.textContent = p.nazov;
+  karta.appendChild(nazov);
+
+  const info = document.createElement('p');
+  const datum = new Date(p.datum);
+  info.textContent = `📅 ${datum.toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
+  karta.appendChild(info);
+
+  if (p.url) {
+    const odkaz = document.createElement('a');
+    odkaz.href = p.url;
+    odkaz.textContent = '🔗 Viac o podujatí';
+    odkaz.target = '_blank';
+    odkaz.rel = 'noopener noreferrer';
+    odkaz.style.color = '#ffd166';
+    karta.appendChild(odkaz);
+  }
+
+  zoznam.appendChild(karta);
+});
 
         zoznam.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } catch (error) {
