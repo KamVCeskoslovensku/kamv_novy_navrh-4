@@ -110,6 +110,20 @@ if (zoznam) {
     karta.querySelector('h3').textContent = p.nazov;
     karta.querySelector('p').textContent = `${p.mesto} • ${new Date(p.datum).toLocaleDateString('sk-SK')}`;
     karta.querySelector('.event-tag').textContent = p.kategoria;
+    if (p.popis) {
+  const detail = document.createElement('p');
+  detail.textContent = p.popis;
+  detail.style.display = 'none';
+
+  const tlacidlo = document.createElement('button');
+  tlacidlo.textContent = '📖 Viac o podujatí';
+  tlacidlo.onclick = () => {
+    detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+  };
+
+  karta.appendChild(tlacidlo);
+  karta.appendChild(detail);
+}
     zoznam.appendChild(karta);
   });
   count = najdene.length;
