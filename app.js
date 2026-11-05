@@ -7,21 +7,28 @@ const SUPABASE_HEADERS = {
   Authorization: `Bearer ${SUPABASE_KEY}`
 };
 async function nacitajUdalosti() {
-  const response = await fetch(SUPABASE_API + '?select=*', {
-    headers: SUPABASE_HEADERS
-  });
-  if (!response.ok) throw new Error('Nepodarilo sa načítať udalosti');
-  const data = await response.json();
-return data.map(p => ({
-  ...p,
-  nazov: p.title,
-  datum: p.start_date,
-  mesto: p.city,
-  kategoria: p.category,
-  popis: p.description || ''
-}));
-}
+  const response = await fetch(
+    'https://putac.sk/api/v1/events/?per_page=100'
+  );
 
+  if (!response.ok) {
+    throw new Error('Nepodarilo sa načítať podujatia');
+  }
+
+  const data = await response.json();
+
+  return (data.results || []).map(p => ({
+    nazov: p.title,
+    datum: p.start,
+    mesto: p.city?.name || '',
+    kategoria: p.category?.name || '',
+    popis: p.description || '',
+    lat: p.location?.lat ?? null,
+    lon: p.location?.lng ?? null,
+    url: p.url,
+    zdroj: 'Pútač.sk'
+  }));
+}
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
