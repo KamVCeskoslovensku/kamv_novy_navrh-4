@@ -35,10 +35,10 @@ async function nacitajBrno() {
     const response = await fetch('https://services6.arcgis.com/fUWVlHWZNxUvTUh8/arcgis/rest/services/Events/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json');
     const data = await response.json();
     return (data.features || []).map(p => ({
-      nazov: p.attributes.name,
+      nazov: p.attributes.name.replace(/&nbsp;/g, ' ').replace(/&#8211;/g, '–').replace(/&amp;/g, '&'),
       popis: p.attributes.text || '',
       obrazok: p.attributes.first_image || '',
-      datum: p.attributes.date_from,
+      datum: new Date(p.attributes.date_from).toISOString(),
       mesto: 'Brno',
       lat: p.attributes.latitude,
       lon: p.attributes.longitude,
