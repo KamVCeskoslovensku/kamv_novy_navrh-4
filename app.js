@@ -108,7 +108,7 @@ if (zoznam) {
       <span class="event-tag"></span>
     `;
     karta.querySelector('h3').textContent = p.nazov;
-    karta.querySelector('p').textContent = `${p.mesto} • ${p.datum}`;
+    karta.querySelector('p').textContent = `${p.mesto} • ${new Date(p.datum).toLocaleDateString('sk-SK')}`;
     karta.querySelector('.event-tag').textContent = p.kategoria;
     zoznam.appendChild(karta);
   });
