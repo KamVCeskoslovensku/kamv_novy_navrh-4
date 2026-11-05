@@ -154,10 +154,7 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
   navigator.geolocation.getCurrentPosition(
     async position => {
       try {
-        const response = await fetch('podujatia.json');
-        if (!response.ok) throw new Error('Nepodarilo sa načítať podujatia.');
-
-        const podujatia = await response.json();
+        const podujatia = await nacitajUdalosti();
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
@@ -171,11 +168,26 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
           return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         };
 
-        const blizke = podujatia
-          .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon))
-          .map(p => ({ ...p, km: vzdialenost(p.lat, p.lon) }))
-          .filter(p => p.km <= 50)
-          .sort((a, b) => a.km - b.km);
+        const dnes = new Date().toLocaleDateString('sv-SE');
+
+const blizke = podujatia
+  .map(p => ({
+    ...p,
+    lat: Number(p.lat ?? p.latitude),
+    lon: Number(p.lon ?? p.lng ?? p.longitude)
+  }))
+  .filter(p =>
+    p.datum &&
+    p.datum.slice(0, 10) >= dnes &&
+    Number.isFinite(p.lat) &&
+    Number.isFinite(p.lon)
+  )
+  .map(p => ({
+    ...p,
+    km: vzdialenost(p.lat, p.lon)
+  }))
+  .filter(p => p.km <= 50)
+  .sort((a, b) => a.km - b.km);
 
         let zoznam = document.getElementById('nearby-results');
 
