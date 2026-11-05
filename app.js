@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 let podujatia = [];
 try {
   podujatia = await nacitajUdalosti();
+  podujatia.push(...await nacitajBrno());
 } catch (error) {
   console.error('Chyba načítania podujatí:', error);
 }
