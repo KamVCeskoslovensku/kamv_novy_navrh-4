@@ -23,6 +23,7 @@ async function nacitajUdalosti() {
     mesto: p.city?.name || '',
     kategoria: p.category?.name || '',
     popis: p.description || '',
+    obrazok: p.image || '',
     lat: p.location?.lat ?? null,
     lon: p.location?.lng ?? null,
     url: p.url,
@@ -223,7 +224,13 @@ const blizke = podujatia
   const nazov = document.createElement('h3');
   nazov.textContent = p.nazov;
   karta.appendChild(nazov);
-
+if (p.obrazok) {
+  const obrazok = document.createElement('img');
+  obrazok.src = p.obrazok;
+  obrazok.alt = p.nazov;
+  obrazok.style.cssText = 'width:100%;border-radius:12px;margin:10px 0;';
+  karta.appendChild(obrazok);
+}
   const info = document.createElement('p');
   const datum = new Date(p.datum);
   info.textContent = `📅 ${datum.toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
