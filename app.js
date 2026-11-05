@@ -228,11 +228,23 @@ const blizke = podujatia
   const datum = new Date(p.datum);
   info.textContent = `📅 ${datum.toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
   karta.appendChild(info);
+const detail = document.createElement('p');
+detail.textContent = p.popis || 'Podrobnosti o podujatí zatiaľ nie sú dostupné.';
+detail.style.display = 'none';
 
+const viac = document.createElement('button');
+viac.textContent = '📖 Viac o podujatí';
+viac.addEventListener('click', () => {
+  detail.style.display =
+    detail.style.display === 'none' ? 'block' : 'none';
+});
+
+karta.appendChild(viac);
+karta.appendChild(detail);
   if (p.url) {
     const odkaz = document.createElement('a');
     odkaz.href = p.url;
-    odkaz.textContent = '🔗 Viac o podujatí';
+    odkaz.textContent = '🔗 Zdroj: Pútač.sk';
     odkaz.target = '_blank';
     odkaz.rel = 'noopener noreferrer';
     odkaz.style.color = '#ffd166';
