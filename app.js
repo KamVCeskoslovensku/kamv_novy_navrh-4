@@ -30,6 +30,22 @@ async function nacitajUdalosti() {
     zdroj: 'Pútač.sk'
   }));
 }
+// Podujatia z Brna – ArcGIS
+async function nacitajBrno() {
+    const response = await fetch('https://services6.arcgis.com/fUWVlHWZNxUvTUh8/arcgis/rest/services/Events/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&f=json');
+    const data = await response.json();
+    return (data.features || []).map(p => ({
+      nazov: p.attributes.name,
+      popis: p.attributes.text || '',
+      obrazok: p.attributes.first_image || '',
+      datum: p.attributes.date_from,
+      mesto: 'Brno',
+      lat: p.attributes.latitude,
+      lon: p.attributes.longitude,
+      url: p.attributes.url,
+      zdroj: 'GoToBrno.cz'
+}));
+}
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
