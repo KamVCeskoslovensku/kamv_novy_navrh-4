@@ -26,7 +26,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
-const podujatia = await nacitajUdalosti();
+let podujatia = [];
+try {
+  podujatia = await nacitajUdalosti();
+} catch (error) {
+  console.error('Chyba načítania podujatí:', error);
+}
   const dnes = new Date().toLocaleDateString('sv-SE');
 const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
   // Kliknutie na kategóriu presunie návštevníka
