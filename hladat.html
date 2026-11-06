@@ -214,6 +214,37 @@
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
+  <script>
+const lang = new URLSearchParams(location.search).get('lang') || 'sk';
+
+const preklady = {
+  cs: {
+    'Podujatia': 'Události',
+    'Turistika': 'Turistika',
+    'Cyklistika': 'Cyklistika',
+    'Najbližšie podujatia': 'Nejbližší události',
+    'Zobraziť všetky podujatia': 'Zobrazit všechny události',
+    'Hľadať': 'Hledat'
+  },
+  en: {
+    'Podujatia': 'Events',
+    'Turistika': 'Hiking',
+    'Cyklistika': 'Cycling',
+    'Najbližšie podujatia': 'Upcoming events',
+    'Zobraziť všetky podujatia': 'View all events',
+    'Hľadať': 'Search'
+  }
+};
+
+if (preklady[lang]) {
+  document.querySelectorAll('h1,h2,h3,a,button').forEach(el => {
+    const text = el.textContent.trim();
+    if (preklady[lang][text]) {
+      el.textContent = preklady[lang][text];
+    }
+  });
+}
+</script>
 
 </body>
 </html>
