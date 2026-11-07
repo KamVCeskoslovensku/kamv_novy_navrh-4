@@ -271,7 +271,7 @@ detail.textContent = (p.popis || 'Podrobnosti o podujatí zatiaľ nie sú dostup
 detail.style.display = 'none';
 
 const viac = document.createElement('button');
-viac.textContent = '📖 Viac o podujatí';
+viac.textContent = localStorage.getItem('lang') === 'en' ? '📖 More about the event' : '📖 Viac o podujatí';
 viac.addEventListener('click', () => {
   detail.style.display =
     detail.style.display === 'none' ? 'block' : 'none';
