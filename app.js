@@ -239,7 +239,7 @@ const blizke = podujatia
         zoznam.replaceChildren();
 
         const nadpis = document.createElement('h3');
-        nadpis.textContent = '📍 Akcie do 50 km od vás';
+        nadpis.textContent = '📍 ' + (localStorage.getItem('lang') === 'en' ? 'Events within 50 km of you' : 'Akcie do 50 km od vás');
         zoznam.appendChild(nadpis);
 
         if (!blizke.length) {
