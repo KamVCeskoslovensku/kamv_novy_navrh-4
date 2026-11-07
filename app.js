@@ -188,7 +188,7 @@ document.getElementById('nearby-events')?.addEventListener('click', () => {
   }
 
   button.disabled = true;
-  button.textContent = '📍 Zisťujem vašu polohu...';
+  button.textContent = localStorage.getItem('lang') === 'en' ? '📍 Finding your location...' : '📍 Zisťujem vašu polohu...';
 
   navigator.geolocation.getCurrentPosition(
     async position => {
