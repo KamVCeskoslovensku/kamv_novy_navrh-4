@@ -278,7 +278,7 @@ const preklady = {
 };
 
 if (preklady[lang]) {
-  document.querySelectorAll('h1,h2,h3,a,button').forEach(el => {
+  document.querySelectorAll('h1,h2,h3,a,button,small').forEach(el => {
     const text = el.textContent.replace(/\s+/g, ' ').trim();
     if (preklady[lang][text]) {
       el.textContent = preklady[lang][text];
