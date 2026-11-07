@@ -266,7 +266,7 @@ html {
 }
 .search-box label[for="search-when"] {
   height: 50px;
-  margin-bottom: -66px;
+  margin-bottom: 8px;
   padding: 0 16px;
   display: flex;
   align-items: center;
