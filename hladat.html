@@ -266,6 +266,12 @@ if (preklady[lang]) {
     }
   });
 }
+    document.querySelectorAll('input[placeholder]').forEach(el => {
+  const text = el.placeholder.replace(/\s+/g, ' ').trim();
+  if (preklady[lang] && preklady[lang][text]) {
+    el.placeholder = preklady[lang][text];
+  }
+});
 </script>
 
 </body>
