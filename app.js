@@ -267,7 +267,7 @@ if (p.obrazok) {
   info.textContent = `📅 ${datum.toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
   karta.appendChild(info);
 const detail = document.createElement('p');
-detail.textContent = (p.popis || (localStorage.getItem('lang') === 'en' ? 'Details about this event are not available yet.' : 'Podrobnosti o podujatí zatiaľ nie sú dostupné.').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+detail.textContent = (p.popis || (localStorage.getItem('lang') === 'en' ? 'Details about this event are not available yet.' : 'Podrobnosti o podujatí zatiaľ nie sú dostupné.')).replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 detail.style.display = 'none';
 
 const viac = document.createElement('button');
