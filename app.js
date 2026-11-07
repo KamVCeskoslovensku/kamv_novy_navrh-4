@@ -93,7 +93,7 @@ let count = 0;
 const najdene = podujatia.filter(p =>
   (!what || (p.nazov + ' ' + p.kategoria + ' ' + p.popis).toLocaleLowerCase('sk').includes(what.toLocaleLowerCase('sk'))) &&
   (!where || (p.mesto + ' ' + p.krajina).toLocaleLowerCase('sk').includes(where.toLocaleLowerCase('sk'))) &&
-  (!when || p.datum === when)
+  (!when || p.datum?.slice(0, 10) === when)
 );
 console.log('Nájdené podujatia:', najdene);
     const zoznam = document.querySelector('#event-list');
