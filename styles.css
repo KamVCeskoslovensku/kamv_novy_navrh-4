@@ -265,14 +265,15 @@ html {
   font-weight: 600;
 }
 .search-box label[for="search-when"] {
-  height: 50px;
+  display: block;
+  position: static;
+  width: 100%;
+  height: auto;
   margin-bottom: 8px;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  pointer-events: none;
+  padding: 0;
+  color: #ffffff;
+  font-weight: 600;
+  pointer-events: auto;
 }
 
 #mapa-podujati {
