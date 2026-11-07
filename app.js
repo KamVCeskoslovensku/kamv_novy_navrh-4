@@ -108,6 +108,13 @@ if (zoznam) {
       <span class="event-tag"></span>
     `;
     karta.querySelector('h3').textContent = p.nazov;
+    if (p.obrazok) {
+  const obrazok = document.createElement('img');
+  obrazok.src = p.obrazok;
+  obrazok.alt = p.nazov;
+  obrazok.style.cssText = 'width:100%;border-radius:12px;margin:10px 0;';
+  karta.appendChild(obrazok);
+}
     karta.querySelector('p').textContent = `${p.mesto} • ${new Date(p.datum).toLocaleDateString('sk-SK')}`;
     karta.querySelector('.event-tag').textContent = p.kategoria;
     if (p.popis) {
