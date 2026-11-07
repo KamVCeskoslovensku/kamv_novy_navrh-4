@@ -272,6 +272,14 @@ if (preklady[lang]) {
     el.placeholder = preklady[lang][text];
   }
 });
+    if (preklady[lang]) {
+  document.querySelectorAll('p, label, a, option').forEach(el => {
+    const text = el.textContent.replace(/\s+/g, ' ').trim();
+    if (preklady[lang][text]) {
+      el.textContent = preklady[lang][text];
+    }
+  });
+}
 </script>
 
 </body>
