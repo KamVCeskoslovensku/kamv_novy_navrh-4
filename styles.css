@@ -570,3 +570,8 @@ html {
     display: none !important;
   }
 }
+@media (max-width: 699px) {
+  .search-box > div:has(#search-when:valid) label[for="search-when"] {
+    display: none !important;
+  }
+}
