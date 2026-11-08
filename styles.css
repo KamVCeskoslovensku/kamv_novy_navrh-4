@@ -575,3 +575,13 @@ html {
     display: none !important;
   }
 }
+@media (max-width: 699px) {
+  .search-box > div:has(#search-when) label {
+    display: block !important;
+  }
+
+  .search-box > div:has(#search-when:focus) label,
+  .search-box > div:has(#search-when:not(:placeholder-shown)) label {
+    display: none !important;
+  }
+}
