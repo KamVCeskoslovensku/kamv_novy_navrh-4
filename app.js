@@ -233,7 +233,7 @@ const blizke = podujatia
     km: vzdialenost(p.lat, p.lon)
   }))
   .filter(p => p.km <= 50)
-  .sort((a, b) => a.km - b.km);
+  .sort((a, b) => new Date(a.datum) - new Date(b.datum) || a.km - b.km);
 
         let zoznam = document.getElementById('nearby-results');
 
