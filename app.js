@@ -70,6 +70,18 @@ try {
   const dnes = new Date().toLocaleDateString('sv-SE');
 const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
   podujatia.push(...motoristickePodujatia);
+  const motoList = document.getElementById('moto-list');
+if (motoList) {
+  motoList.innerHTML = motoristickePodujatia.map(p => `
+    <div class="event-card" style="padding:16px;margin:12px 0;">
+      <h3>${p.nazov}</h3>
+      <p>🏍️ ${p.zdroj}</p>
+      <a href="${p.url}" target="_blank" rel="noopener noreferrer">
+        Zobraziť kalendár podujatí →
+      </a>
+    </div>
+  `).join('');
+}
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
