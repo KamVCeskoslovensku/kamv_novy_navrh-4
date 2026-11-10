@@ -271,7 +271,7 @@ if (p.obrazok) {
 }
   const info = document.createElement('p');
   const datum = new Date(p.datum);
-  info.textContent = `📅 ${datum.toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
+  info.textContent = `📅 ${datum.toLocaleDateString('sk-SK', {dateStyle:'medium'})}, ${datum.getHours() === 0 && datum.getMinutes() === 0 ? 'Čas neuvedený' : datum.toLocaleTimeString('sk-SK', {hour:'2-digit',minute:'2-digit'})} | 📍 ${p.mesto} | ${p.km.toFixed(1)} km`;
   karta.appendChild(info);
 const detail = document.createElement('p');
 detail.textContent = (p.popis || (localStorage.getItem('lang') === 'en' ? 'Details about this event are not available yet.' : 'Podrobnosti o podujatí zatiaľ nie sú dostupné.')).replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
