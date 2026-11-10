@@ -342,6 +342,7 @@ const farba =
   /hudba|koncert|festival/.test(kategoria) ? 'purple' :
   /šport|sport|beh|turistika/.test(kategoria) ? 'green' :
   /divadlo|kultúra|kultura|výstava|vystava/.test(kategoria) ? 'orange' :
+  /motor|auto|moto|veterán|veteran|tuning|rally|preteky|zraz/.test(kategoria) ? 'red' :
   'blue';
     L.circleMarker([p.lat, p.lon], {
       radius: 8,
