@@ -36,6 +36,7 @@ async function nacitajBrno() {
     const data = await response.json();
     return (data.features || []).map(p => ({
       nazov: p.attributes.name.replace(/&nbsp;/g, ' ').replace(/&#8211;/g, '–').replace(/&amp;/g, '&'),
+      kategoria: p.attributes.categories || '',
       popis: (p.attributes.text || '').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
       obrazok: p.attributes.first_image || '',
       datum: new Date(p.attributes.date_from).toISOString(),
