@@ -81,7 +81,7 @@ motoristickePodujatia.push(...motoAkcie);
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = motoAkcie.map(p => `
+  motoList.innerHTML = motoristickePodujatia.map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>🏍️ ${p.zdroj}</p>
