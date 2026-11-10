@@ -337,10 +337,17 @@ if (mapaElement && typeof L !== 'undefined') {
 
 podujatia.forEach((p, index) => {
   if (typeof p.lat === 'number' && typeof p.lon === 'number') {
+    const kategoria = (p.kategoria || '').toLowerCase();
+const farba =
+  /hudba|koncert|festival/.test(kategoria) ? 'purple' :
+  /šport|sport|beh|turistika/.test(kategoria) ? 'green' :
+  /divadlo|kultúra|kultura|výstava|vystava/.test(kategoria) ? 'orange' :
+  'blue';
     L.circleMarker([p.lat, p.lon], {
       radius: 8,
-      color: 'blue',
-      fillColor: 'blue',
+      color: farba,
+fillColor: farba,
+      
       fillOpacity: 0.9
     })
       .addTo(mapa)
