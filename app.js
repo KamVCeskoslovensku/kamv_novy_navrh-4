@@ -317,7 +317,11 @@ karta.appendChild(detail);
 });
 document.addEventListener('DOMContentLoaded', async () => {
 const podujatia = await nacitajUdalosti();
-  
+  try {
+  podujatia.push(...(await nacitajBrno()));
+} catch (error) {
+  console.error('Chyba načítania Brna:', error);
+}
 
   const mapaElement = document.getElementById('mapa-podujati');
 
