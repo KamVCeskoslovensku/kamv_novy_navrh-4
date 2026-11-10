@@ -47,6 +47,15 @@ async function nacitajBrno() {
       zdroj: 'GoToBrno.cz'
 }));
 }
+// Motoristické podujatia – Autoklub ČR
+const MOTORSPORT_ZDROJ = 'https://www.autoklub.cz/';
+const motoristickePodujatia = [];
+motoristickePodujatia.push({
+  nazov: '🏁 Kalendár motoristických podujatí 2026',
+  kategoria: 'Motorizmus',
+  url: MOTORSPORT_ZDROJ,
+  zdroj: 'Autoklub ČR'
+});
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
@@ -60,6 +69,7 @@ try {
 }
   const dnes = new Date().toLocaleDateString('sv-SE');
 const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
+  podujatia.push(...motoristickePodujatia);
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
