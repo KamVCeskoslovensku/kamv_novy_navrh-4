@@ -72,7 +72,7 @@ const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
   podujatia.push(...motoristickePodujatia);
   
 const motoAkcie = podujatia.filter(p =>
-  /motokros|motocross|motocyk|motork|moto zraz|superbike|road racing/i.test(
+  /motokros|motocross|motocyk|motork|moto zraz|superbike|road racing|cestné preteky|okruh|enduro|motard|speedway|plochá dráha/i.test(
     `${p.nazov || ''} ${p.kategoria || ''}`
   )
 );
@@ -81,7 +81,7 @@ motoristickePodujatia.push(...motoAkcie);
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = motoristickePodujatia.map(p => `
+  motoList.innerHTML = motoAkcie.map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>🏍️ ${p.zdroj}</p>
