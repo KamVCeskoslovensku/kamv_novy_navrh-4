@@ -344,7 +344,7 @@ podujatia.forEach((p, index) => {
       fillOpacity: 0.9
     })
       .addTo(mapa)
-  .bindPopup(`<div style="min-width:200px;max-width:260px">
+  .bindPopup(`<div style="min-width:200px;max-width:260px;max-height:55vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch">
   <b>${p.nazov}</b>
   ${p.obrazok ? `<img src="${p.obrazok}" alt="" style="width:100%;border-radius:10px;margin:10px 0">` : ''}
   <div>📍 ${p.mesto}</div>
