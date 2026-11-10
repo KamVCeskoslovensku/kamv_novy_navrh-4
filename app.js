@@ -344,7 +344,14 @@ podujatia.forEach((p, index) => {
       fillOpacity: 0.9
     })
       .addTo(mapa)
-  .bindPopup(`<b>${p.nazov}</b><br>📍 ${p.mesto}<br>📅 ${p.datum}<br>📝 ${p.popis || ''}<br><a href="${p.url}" target="_blank" rel="noopener noreferrer">👉 Viac informácií</a>`, { maxWidth: 220, autoPan: true, autoPanPadding: [80, 80] });
+  .bindPopup(`<div style="min-width:200px;max-width:260px">
+  <b>${p.nazov}</b>
+  ${p.obrazok ? `<img src="${p.obrazok}" alt="" style="width:100%;border-radius:10px;margin:10px 0">` : ''}
+  <div>📍 ${p.mesto}</div>
+  <div>📅 ${new Date(p.datum).toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})}</div>
+  <p>${p.popis || ''}</p>
+  <a href="${p.url}" target="_blank" rel="noopener noreferrer">👉 Viac informácií</a>
+</div>`, { maxWidth: 280, autoPan: true, autoPanPadding: [80, 80] });
 
   }
 });
