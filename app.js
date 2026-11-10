@@ -72,6 +72,7 @@ const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
   podujatia.push(...motoristickePodujatia);
   
 const motoAkcie = podujatia.filter(p =>
+  (!p.datum || new Date(p.datum) >= new Date()) &&
   /motokros|motocross|motocyk|motork|moto zraz|superbike|road racing|cestné preteky|okruh|enduro|motard|speedway|plochá dráha/i.test(
     `${p.nazov || ''} ${p.kategoria || ''}`
   )
