@@ -48,7 +48,7 @@ async function nacitajBrno() {
 }));
 }
 // Motoristické podujatia – Autoklub ČR
-const MOTORSPORT_ZDROJ = 'https://www.autoklub.cz/';
+const MOTORSPORT_ZDROJ = 'https://www.autoklub.cz/205368-kalendar-automobiloveho-sportu-acr-2026/';
 const motoristickePodujatia = [];
 motoristickePodujatia.push({
   nazov: '🏁 Kalendár motoristických podujatí 2026',
