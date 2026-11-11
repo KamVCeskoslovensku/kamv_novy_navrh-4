@@ -56,6 +56,12 @@ motoristickePodujatia.push({
   url: MOTORSPORT_ZDROJ,
   zdroj: 'Autoklub ČR'
 });
+motoristickePodujatia.push({
+  nazov: '🇸🇰 Kalendár motocyklových podujatí SMF 2026',
+  kategoria: 'Motorizmus',
+  url: 'https://www.smf.sk/kalendare-podujati-smf/',
+  zdroj: 'Slovenská motocyklová federácia'
+});
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
