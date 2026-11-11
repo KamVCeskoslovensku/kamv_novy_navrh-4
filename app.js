@@ -88,7 +88,7 @@ const motoAkcie = podujatia.filter(p =>
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...motoristickePodujatia, ...motoAkcie].map(p => `
+  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...motoAkcie].map(p => [p.url || p.nazov, p])).values()].map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>🏍️ ${p.zdroj}</p>
