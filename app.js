@@ -68,8 +68,8 @@ try {
   console.error('Chyba načítania podujatí:', error);
 }
   const dnes = new Date().toLocaleDateString('sv-SE');
-const buducePodujatia = podujatia.filter(p => p.datum >= dnes);
-  podujatia.push(...motoristickePodujatia);
+const buducePodujatia = podujatia.filter(p => p.datum && new Date(p.datum).getTime() >= new Date().setHours(0, 0, 0, 0));
+  podujatia = [...buducePodujatia, ...motoristickePodujatia];
   
 const motoAkcie = podujatia.filter(p =>
   (!p.datum || new Date(p.datum) >= new Date()) &&
