@@ -133,7 +133,7 @@ const najdene = podujatia.filter(p =>
   (!what || (p.nazov + ' ' + p.kategoria + ' ' + p.popis).toLocaleLowerCase('sk').includes(what.toLocaleLowerCase('sk'))) &&
   (!where || (p.mesto + ' ' + p.krajina).toLocaleLowerCase('sk').includes(where.toLocaleLowerCase('sk'))) &&
   (!when || p.datum?.slice(0, 10) === when)
-);
+).sort((a, b) => new Date(a.datum) - new Date(b.datum));
 console.log('Nájdené podujatia:', najdene);
     const zoznam = document.querySelector('#event-list');
 if (zoznam) {
