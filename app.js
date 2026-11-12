@@ -124,6 +124,7 @@ if (motoList) {
     const what = document.getElementById('search-what')?.value.trim() || '';
 const where = document.getElementById('search-where')?.value.trim() || '';
 const when = document.getElementById('search-when')?.value || '';
+    const country = document.getElementById('search-country')?.value || 'all';
 const query = [what, where].filter(Boolean).join(' ');
     const selectedDate = when;
 const cards = [...document.querySelectorAll('.event-card')];
@@ -132,6 +133,7 @@ let count = 0;
 const najdene = podujatia.filter(p =>
   (!what || (p.nazov + ' ' + p.kategoria + ' ' + p.popis).toLocaleLowerCase('sk').includes(what.toLocaleLowerCase('sk'))) &&
   (!where || (p.mesto + ' ' + p.krajina).toLocaleLowerCase('sk').includes(where.toLocaleLowerCase('sk'))) &&
+(country === 'all' || (country === 'sk' ? p.zdroj === 'Pútač.sk' : p.zdroj === 'GoToBrno')) &&
   (!when || p.datum?.slice(0, 10) === when)
 ).sort((a, b) => new Date(a.datum) - new Date(b.datum));
 console.log('Nájdené podujatia:', najdene);
