@@ -8,7 +8,7 @@ const SUPABASE_HEADERS = {
 };
 async function nacitajUdalosti() {
   const response = await fetch(
-    'https://putac.sk/api/v1/events/?per_page=100'
+    'https://putac.sk/api/v1/events/?per_page=500'
   );
 
   if (!response.ok) {
