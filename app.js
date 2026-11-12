@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 let podujatia = [];
 try {
   podujatia = await nacitajUdalosti();
-  podujatia.push(...(await nacitajBrno()).filter(p => new Date(p.datum) >= new Date()));
+  podujatia.push(...(await nacitajBrno()));
 } catch (error) {
   console.error('Chyba načítania podujatí:', error);
 }
