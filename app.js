@@ -39,7 +39,7 @@ async function nacitajBrno() {
       kategoria: p.attributes.categories || '',
       popis: (p.attributes.text || '').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
       obrazok: p.attributes.first_image || '',
-      datum: new Date(p.attributes.date_from).toISOString(),
+      datum: p.attributes.date_from ? new Date(p.attributes.date_from).toISOString() : null,
       mesto: 'Brno',
       lat: p.attributes.latitude,
       lon: p.attributes.longitude,
