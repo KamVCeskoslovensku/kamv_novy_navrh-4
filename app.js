@@ -75,7 +75,7 @@ try {
 }
   const dnes = new Date().toLocaleDateString('sv-SE');
 const buducePodujatia = podujatia.filter(p => p.datum && new Date(p.datum).getTime() >= new Date().setHours(0, 0, 0, 0));
-  podujatia = [...buducePodujatia, ...motoristickePodujatia];
+  podujatia = [...buducePodujatia].sort((a, b) => new Date(a.datum) - new Date(b.datum)).concat(motoristickePodujatia);
   
 const motoAkcie = podujatia.filter(p =>
   (!p.datum || new Date(p.datum) >= new Date()) &&
