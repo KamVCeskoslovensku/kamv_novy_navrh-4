@@ -204,6 +204,7 @@ result.textContent = count
       button.textContent = selected ? '♥' : '♡';
     });
   });
+  searchButton?.click();
 });
 // Zapamätanie obľúbených podujatí
 document.addEventListener('DOMContentLoaded', () => {
