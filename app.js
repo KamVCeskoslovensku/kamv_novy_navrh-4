@@ -439,7 +439,7 @@ async function prihlasitSa(email) {
   }
 // Dokončenie prihlásenia cez e-mailový odkaz Supabase
 async function skontrolujPrihlasenie() {
-  const params = new URLSearchParams(window.location.hash.substring(1));
+  const params = new URLSearchParams(window.location.hash.substring(1) || window.location.search.substring(1));
   const accessToken = params.get('access_token');
   const refreshToken = params.get('refresh_token');
 
