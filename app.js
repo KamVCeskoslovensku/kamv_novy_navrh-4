@@ -479,4 +479,26 @@ async function skontrolujPrihlasenie() {
   }
 }
 
+document.getElementById('pridat-mototrasu')?.addEventListener('click', async () => {
+  const token = localStorage.getItem('kamv_access_token');
+
+  if (!token) {
+    alert('🔐 Na pridanie mototrasy sa musíš najprv prihlásiť.');
+    return;
+  }
+
+  const response = await fetch(`${SUPABASE_AUTH_URL}/user`, {
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  if (!response.ok) {
+    alert('🔐 Prihlásenie vypršalo. Prihlás sa znova.');
+    return;
+  }
+
+  alert('🏍️ Si prihlásený! Teraz pripravíme formulár na pridanie mototrasy.');
+});
 document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
