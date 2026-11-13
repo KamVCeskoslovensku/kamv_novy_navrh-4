@@ -111,6 +111,38 @@
   <button id="pridat-mototrasu" type="button" style="padding:14px;margin:15px 0;border-radius:12px;">
   ➕ Pridať vlastnú mototrasu
 </button>
+  <form id="formular-mototrasy" class="event-card" style="display:none;padding:20px;margin:15px 0;">
+  <h3>🏍️ Pridať vlastnú mototrasu</h3>
+
+  <label for="moto-nazov">Názov trasy</label>
+  <input id="moto-nazov" type="text"
+    placeholder="Napr. Výlet cez Tatry"
+    maxlength="100" required
+    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+  <label for="moto-krajina">Krajina</label>
+  <select id="moto-krajina" required
+    style="width:100%;padding:12px;margin:8px 0 15px;">
+    <option value="Slovensko">🇸🇰 Slovensko</option>
+    <option value="Česko">🇨🇿 Česko</option>
+  </select>
+
+  <label for="moto-popis">Krátky popis trasy</label>
+  <textarea id="moto-popis"
+    placeholder="Odkiaľ kam vedie trasa, čo je na nej zaujímavé..."
+    maxlength="500" required
+    style="width:100%;padding:12px;margin:8px 0 15px;"></textarea>
+
+  <label for="moto-mapa">Odkaz na Google Maps</label>
+  <input id="moto-mapa" type="url"
+    placeholder="https://www.google.com/maps/..."
+    required
+    style="width:100%;padding:12px;margin:8px 0 15px;">
+
+  <button type="submit" style="padding:14px;border-radius:12px;">
+    ✅ Odoslať mototrasu
+  </button>
+</form>
   <article class="event-card">
   <h3>🏍️ Šturec – horský motovýlet</h3>
   <p>📍 Slovensko – Harmanec, Šturec, Turčianske Teplice</p>
