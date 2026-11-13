@@ -499,6 +499,10 @@ document.getElementById('pridat-mototrasu')?.addEventListener('click', async () 
     return;
   }
 
-  alert('🏍️ Si prihlásený! Teraz pripravíme formulár na pridanie mototrasy.');
+  const formular = document.getElementById('formular-mototrasy');
+if (formular) {
+  formular.style.display = 'block';
+  formular.scrollIntoView({ behavior: 'smooth' });
+}
 });
 document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
