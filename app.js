@@ -472,7 +472,7 @@ async function skontrolujPrihlasenie() {
 
     if (tlacidlo) {
       tlacidlo.textContent = '👤 Môj účet';
-      tlacidlo.onclick = () => alert(`Prihlásený účet: ${user.email}`);
+      tlacidlo.onclick = () => alert('👤 Môj profil\n📧 ' + user.email);
     }
   } catch (error) {
     console.error('Chyba overenia prihlásenia:', error);
