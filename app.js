@@ -506,3 +506,14 @@ if (formular) {
 }
 });
 document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
+document.addEventListener('DOMContentLoaded', () => {
+  const tlacidlo = [...document.querySelectorAll('button')]
+    .find(b => b.textContent.includes('Môj účet'));
+
+  if (tlacidlo) {
+    tlacidlo.onclick = () => {
+      const email = prompt('Zadaj svoj e-mail:');
+      if (email) alert('👤 Môj profil\n📧 ' + email);
+    };
+  }
+});
