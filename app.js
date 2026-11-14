@@ -62,6 +62,13 @@ motoristickePodujatia.push({
   url: 'https://www.smf.sk/kalendare-podujati-smf/',
   zdroj: 'Slovenská motocyklová federácia'
 });
+const smfPodujatia = [];
+// Podujatia SMF – konkrétne termíny
+// Kalendár 2026 je už ukončený.
+// Nové podujatia pridáme po zverejnení kalendára 2027.
+const aktualneSmfPodujatia = smfPodujatia.filter(p =>
+  p.datum && new Date(p.datum) >= new Date()
+);
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
@@ -88,7 +95,7 @@ const motoAkcie = podujatia.filter(p =>
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...motoAkcie].map(p => [p.url || p.nazov, p])).values()].map(p => `
+  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => [p.url || p.nazov, p])).values()].map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>🏍️ ${p.zdroj}</p>
