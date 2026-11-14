@@ -95,9 +95,10 @@ const motoAkcie = podujatia.filter(p =>
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => [p.url || p.nazov, p])).values()].map(p => `
+  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => [p.nazov + '|' + (p.datum || ''), p])).values()].map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
+      <p>📅 ${p.datum ? new Date(p.datum).toLocaleDateString('sk-SK') : 'Kalendár podujatí'}${p.mesto ? ' 📍 ' + p.mesto : ''}</p>
       <p>🏍️ ${p.zdroj}</p>
       <a href="${p.url}" target="_blank" rel="noopener noreferrer">
         Zobraziť kalendár podujatí →
