@@ -57,7 +57,7 @@ motoristickePodujatia.push({
   zdroj: 'Autoklub ČR'
 });
 motoristickePodujatia.push({
-  nazov: '🇸🇰 Kalendár motocyklových podujatí SMF 2026',
+  nazov: '🇸🇰 Kalendár motocyklových podujatí SMF – sezóna 2027 (pripravuje sa)',
   kategoria: 'Motorizmus',
   url: 'https://www.smf.sk/kalendare-podujati-smf/',
   zdroj: 'Slovenská motocyklová federácia'
