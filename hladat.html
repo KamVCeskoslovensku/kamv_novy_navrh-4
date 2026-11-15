@@ -415,6 +415,50 @@ if (preklady[lang]) {
   });
 }
 </script>
+<section id="moje-zaujmy" style="padding:20px">
+  <h2>❤️ Moje záujmy</h2>
+  <p>Napíš, čo ťa zaujíma:</p>
+  <input type="text" id="novy-zaujem"
+    placeholder="Napr. motokros, jarmoky, koncerty..."
+    style="width:100%;padding:12px">
+  <button type="button" id="pridat-zaujem">
+    + Pridať záujem
+  </button>
+  <div id="zoznam-zaujmov"></div>
+</section>
+  <script>
+const pole = document.getElementById('novy-zaujem');
+const zoznam = document.getElementById('zoznam-zaujmov');
+let zaujmy = JSON.parse(localStorage.getItem('mojeZaujmy') || '[]');
 
+function zobrazZaujmy() {
+  zoznam.replaceChildren();
+  zaujmy.forEach((zaujem, i) => {
+    const riadok = document.createElement('p');
+    const nazov = document.createElement('span');
+    nazov.textContent = zaujem + ' ';
+    const vymazat = document.createElement('button');
+    vymazat.textContent = '❌';
+    vymazat.onclick = () => {
+      zaujmy.splice(i, 1);
+      localStorage.setItem('mojeZaujmy', JSON.stringify(zaujmy));
+      zobrazZaujmy();
+    };
+    riadok.append(nazov, vymazat);
+    zoznam.append(riadok);
+  });
+}
+
+document.getElementById('pridat-zaujem').onclick = () => {
+  const zaujem = pole.value.trim();
+  if (!zaujem || zaujmy.includes(zaujem)) return;
+  zaujmy.push(zaujem);
+  localStorage.setItem('mojeZaujmy', JSON.stringify(zaujmy));
+  pole.value = '';
+  zobrazZaujmy();
+};
+
+zobrazZaujmy();
+</script>
 </body>
 </html>
