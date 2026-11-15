@@ -77,7 +77,7 @@ const smfPodujatia = [
   { datum: '2026-09-12', nazov: 'MM SR – skrátené enduro', mesto: 'Duchonka' },
   { datum: '2026-10-24', nazov: 'MM SR – enduro', mesto: 'Szandaváralja, Maďarsko' }
 ];
-
+const noveMotoPodujatia = [];
 // Podujatia SMF – konkrétne termíny
 // Kalendár 2026 je už ukončený.
 // Nové podujatia pridáme po zverejnení kalendára 2027.
