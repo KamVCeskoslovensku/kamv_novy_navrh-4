@@ -472,6 +472,20 @@ async function prihlasitSa(email) {
 // Dokončenie prihlásenia cez e-mailový odkaz Supabase
 async function skontrolujPrihlasenie() {
   const params = new URLSearchParams(window.location.hash.substring(1) || window.location.search.substring(1));
+  const code = params.get('code');
+if (code) {
+  const response = await fetch(`${SUPABASE_AUTH_URL}/token?grant_type=pkce`, {
+    method: 'POST',
+    headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ auth_code: code })
+  });
+  if (response.ok) {
+    const session = await response.json();
+    localStorage.setItem('kamv_access_token', session.access_token);
+    localStorage.setItem('kamv_refresh_token', session.refresh_token);
+    history.replaceState(null, '', window.location.pathname);
+  }
+}
   const accessToken = params.get('access_token');
   const refreshToken = params.get('refresh_token');
 
