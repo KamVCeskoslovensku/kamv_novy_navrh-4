@@ -62,10 +62,26 @@ motoristickePodujatia.push({
   url: 'https://www.smf.sk/kalendare-podujati-smf/',
   zdroj: 'Slovenská motocyklová federácia'
 });
-const smfPodujatia = [];
+
+const smfPodujatia = [
+  { datum: '2026-03-21', nazov: 'Enduro Cup Stred', mesto: 'Brezno – BMT' },
+  { datum: '2026-03-28', nazov: 'MM SR – skrátené enduro', mesto: 'Družstevná pri Hornáde' },
+  { datum: '2026-04-03', nazov: 'M SR šprint – POWER FEST', mesto: 'Slovakia Ring' },
+  { datum: '2026-04-18', nazov: 'MM SR – country cross', mesto: 'Skýcov' },
+  { datum: '2026-04-24', nazov: 'Jarná cena Brna – cestné preteky', mesto: 'Brno, ČR' },
+  { datum: '2026-05-09', nazov: 'MM SR a Pohár SMF', mesto: 'Vieska Bezdedov' },
+  { datum: '2026-05-23', nazov: 'MM SR – skrátené enduro', mesto: 'Morovno' },
+  { datum: '2026-06-06', nazov: 'MM SR – enduro', mesto: 'Lehota pod Vtáčnikom' },
+  { datum: '2026-07-11', nazov: 'MM SR – country cross', mesto: 'Žaškov' },
+  { datum: '2026-08-22', nazov: 'MM SR – enduro', mesto: 'Polomka' },
+  { datum: '2026-09-12', nazov: 'MM SR – skrátené enduro', mesto: 'Duchonka' },
+  { datum: '2026-10-24', nazov: 'MM SR – enduro', mesto: 'Szandaváralja, Maďarsko' }
+];
+
 // Podujatia SMF – konkrétne termíny
 // Kalendár 2026 je už ukončený.
 // Nové podujatia pridáme po zverejnení kalendára 2027.
+// Archív motocyklových podujatí SMF 2026
 const aktualneSmfPodujatia = smfPodujatia.filter(p =>
   p.datum && new Date(p.datum) >= new Date()
 );
@@ -95,7 +111,7 @@ const motoAkcie = podujatia.filter(p =>
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => [p.nazov + '|' + (p.datum || ''), p])).values()].map(p => `
+  motoList.innerHTML = [...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>📅 ${p.datum ? new Date(p.datum).toLocaleDateString('sk-SK') : 'Kalendár podujatí'}${p.mesto ? ' 📍 ' + p.mesto : ''}</p>
