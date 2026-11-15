@@ -109,7 +109,7 @@ const motoAkcie = podujatia.filter(p =>
 
   const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].map(p => [p.nazov, p])).values()].map(p => `
+  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].filter(p => !p.datum || new Date(p.datum) >= new Date(new Date().setHours(0, 0, 0, 0))).map(p => [p.nazov, p])).values()].map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>📅 ${p.datum ? new Date(p.datum).toLocaleDateString('sk-SK') : 'Kalendár podujatí'}${p.mesto ? ' 📍 ' + p.mesto : ''}</p>
