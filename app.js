@@ -51,13 +51,13 @@ async function nacitajBrno() {
 const MOTORSPORT_ZDROJ = 'https://www.autoklub.cz/205368-kalendar-automobiloveho-sportu-acr-2026/';
 const motoristickePodujatia = [];
 motoristickePodujatia.push({
-  nazov: '🏁 Kalendár motoristických podujatí ČR – sezóna 2027 (pripravuje sa)',
+  nazov: '🏁 Kalendár motoristických podujatí ČR – ročník 2026',
   kategoria: 'Motorizmus',
   url: MOTORSPORT_ZDROJ,
   zdroj: 'Autoklub ČR'
 });
 motoristickePodujatia.push({
-  nazov: '🇸🇰 Kalendár motocyklových podujatí SMF – sezóna 2027 (pripravuje sa)',
+  nazov: '🇸🇰 Kalendár motocyklových podujatí SMF – ročník 2026',
   kategoria: 'Motorizmus',
   url: 'https://www.smf.sk/kalendare-podujati-smf/',
   zdroj: 'Slovenská motocyklová federácia'
