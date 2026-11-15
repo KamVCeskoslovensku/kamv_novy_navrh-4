@@ -450,6 +450,13 @@ function zobrazZaujmy() {
 }
 
 document.getElementById('pridat-zaujem').onclick = () => {
+  
+const token = localStorage.getItem('kamv_access_token');
+if (!token) {
+  alert('🔒 Na pridávanie záujmov sa musíš najprv prihlásiť.');
+  return;
+}
+
   const zaujem = pole.value.trim();
   if (!zaujem || zaujmy.includes(zaujem)) return;
   zaujmy.push(zaujem);
