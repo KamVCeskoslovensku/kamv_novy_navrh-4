@@ -82,9 +82,7 @@ const smfPodujatia = [
 // Kalendár 2026 je už ukončený.
 // Nové podujatia pridáme po zverejnení kalendára 2027.
 // Archív motocyklových podujatí SMF 2026
-const aktualneSmfPodujatia = smfPodujatia.filter(p =>
-  p.datum && new Date(p.datum) >= new Date()
-);
+const aktualneSmfPodujatia = smfPodujatia;
 document.addEventListener('DOMContentLoaded', async () => {
   const categories = document.querySelectorAll('.category-card');
   const searchBox = document.querySelector('.search-box');
