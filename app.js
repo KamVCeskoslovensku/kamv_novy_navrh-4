@@ -107,19 +107,29 @@ const motoAkcie = podujatia.filter(p =>
 
 
 
-  const motoList = document.getElementById('moto-list');
+  
+const motoList = document.getElementById('moto-list');
 if (motoList) {
-  motoList.innerHTML = [...new Map([...motoristickePodujatia, ...aktualneSmfPodujatia, ...motoAkcie].filter(p => !p.datum || new Date(p.datum) >= new Date(new Date().setHours(0, 0, 0, 0))).map(p => [p.nazov, p])).values()].map(p => `
+  const vsetkyMoto = [
+    ...motoristickePodujatia,
+    ...aktualneSmfPodujatia,
+    ...motoAkcie
+  ];
+
+  const bezDuplicit = [...new Map(
+    vsetkyMoto.map(p => [`${p.nazov}|${p.datum || ''}`, p])
+  ).values()];
+
+  motoList.innerHTML = bezDuplicit.map(p => `
     <div class="event-card" style="padding:16px;margin:12px 0;">
       <h3>${p.nazov}</h3>
       <p>📅 ${p.datum ? new Date(p.datum).toLocaleDateString('sk-SK') : 'Kalendár podujatí'}${p.mesto ? ' 📍 ' + p.mesto : ''}</p>
-      <p>🏍️ ${p.zdroj}</p>
-      <a href="${p.url}" target="_blank" rel="noopener noreferrer">
-        Zobraziť kalendár podujatí →
-      </a>
+      <p>🏍️ ${p.zdroj || 'SMF – Slovenská motocyklová federácia'}</p>
+      ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer">Zobraziť podrobnosti →</a>` : ''}
     </div>
   `).join('');
 }
+
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
