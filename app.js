@@ -457,6 +457,7 @@ fillColor: farba,
 // Prihlasovanie cez Supabase
 const SUPABASE_AUTH_URL = `${SUPABASE_URL}/auth/v1`;
 async function prihlasitSa(email) {
+  const redirectUrl = 'https://kamvceskoslovensku.sk/';
             const response = await fetch(`${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent('https://kamvceskoslovensku.sk/')}`, {
           method: 'POST',
           headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
@@ -464,7 +465,7 @@ async function prihlasitSa(email) {
   email,
   create_user: true,
   gotrue_meta_security: {},
-  email_redirect_to: 'https://kamvceskoslovensku.sk/',
+  email_redirect_to: redirectUrl,
 }),
         });
     if (!response.ok) throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
