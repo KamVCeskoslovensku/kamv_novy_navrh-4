@@ -472,13 +472,13 @@ async function prihlasitSa(email) {
   }
 // Dokončenie prihlásenia cez e-mailový odkaz Supabase
 async function skontrolujPrihlasenie() {
-  const params = new URLSearchParams(window.location.hash.substring(1) || window.location.search.substring(1));
+  const params = new URLSearchParams(window.location.search || window.location.hash.substring(1));
   const code = params.get('code');
 if (code) {
   const response = await fetch(`${SUPABASE_AUTH_URL}/token?grant_type=pkce`, {
     method: 'POST',
     headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ auth_code: code })
+    body: JSON.stringify({ auth_code: code, code_verifier: localStorage.getItem('sb-ijctkszgvhinoubtbyfb-auth-token-code-verifier') })
   });
   if (response.ok) {
     const session = await response.json();
