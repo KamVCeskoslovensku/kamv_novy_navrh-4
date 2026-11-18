@@ -456,39 +456,48 @@ fillColor: farba,
  }); 
 // Prihlasovanie cez Supabase
 const SUPABASE_AUTH_URL = `${SUPABASE_URL}/auth/v1`;
+
 async function prihlasitSa(email) {
   const redirectUrl = 'https://kamvceskoslovensku.sk/';
-            const response = await fetch(`${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent('https://kamvceskoslovensku.sk/')}`, {
-          method: 'POST',
-          headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-  email,
-  create_user: true,
-  gotrue_meta_security: {},
-  email_redirect_to: redirectUrl,
-}),
-        });
-    if (!response.ok) throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
+
+  const response = await fetch(
+    `${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent(redirectUrl)}`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        create_user: true,
+        email_redirect_to: redirectUrl
+      })
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error('Nepodarilo sa odoslať prihlasovací e-mail.');
   }
+}
+
 // Dokončenie prihlásenia cez e-mailový odkaz Supabase
 async function skontrolujPrihlasenie() {
   const params = new URLSearchParams(window.location.search || window.location.hash.substring(1));
-  const code = params.get('code');
-if (code) {
-  const response = await fetch(`${SUPABASE_AUTH_URL}/token?grant_type=pkce`, {
-    method: 'POST',
-    headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ auth_code: code, code_verifier: localStorage.getItem('sb-ijctkszgvhinoubtbyfb-auth-token-code-verifier') })
-  });
-  if (response.ok) {
-    const session = await response.json();
-    localStorage.setItem('kamv_access_token', session.access_token);
-    localStorage.setItem('kamv_refresh_token', session.refresh_token);
-    history.replaceState(null, '', window.location.pathname);
-  }
-}
-  const accessToken = params.get('access_token');
-  const refreshToken = params.get('refresh_token');
+  
+  
+const hashParams = new URLSearchParams(
+  window.location.hash.substring(1)
+);
+
+const accessToken =
+  hashParams.get('access_token') ||
+  params.get('access_token');
+
+const refreshToken =
+  hashParams.get('refresh_token') ||
+  params.get('refresh_token');
+
 
   if (accessToken && refreshToken) {
     localStorage.setItem('kamv_access_token', accessToken);
@@ -553,14 +562,4 @@ if (formular) {
 }
 });
 document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
-document.addEventListener('DOMContentLoaded', () => {
-  const tlacidlo = [...document.querySelectorAll('button')]
-    .find(b => b.textContent.includes('Môj účet'));
 
-  if (tlacidlo) {
-    tlacidlo.onclick = () => {
-      const email = prompt('Zadaj svoj e-mail:');
-      if (email) alert('👤 Môj profil\n📧 ' + email);
-    };
-  }
-});
