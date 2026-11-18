@@ -485,7 +485,9 @@ async function prihlasitSa(email) {
 async function skontrolujPrihlasenie() {
   const params = new URLSearchParams(window.location.search || window.location.hash.substring(1));
   
-  
+
+
+
 const hashParams = new URLSearchParams(
   window.location.hash.substring(1)
 );
