@@ -485,36 +485,6 @@ async function prihlasitSa(email) {
 async function skontrolujPrihlasenie() {
   const params = new URLSearchParams(window.location.search || window.location.hash.substring(1));
   
-const code = params.get('code');
-
-if (code) {
-  const response = await fetch(
-    `${SUPABASE_AUTH_URL}/token?grant_type=pkce`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        auth_code: code,
-        code_verifier: localStorage.getItem('kamv_code_verifier')
-      })
-    }
-  );
-  if (!response.ok) {
-  throw new Error('Nepodarilo sa dokončiť prihlásenie');
-}
-
-const data = await response.json();
-
-if (data.access_token && data.refresh_token) {
-  localStorage.setItem('kamv_access_token', data.access_token);
-  localStorage.setItem('kamv_refresh_token', data.refresh_token);
-  localStorage.removeItem('kamv_code_verifier');
-  window.history.replaceState(null, '', window.location.pathname);
-}
-}
 
 
 const hashParams = new URLSearchParams(
