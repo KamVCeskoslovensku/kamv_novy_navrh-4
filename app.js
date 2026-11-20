@@ -458,7 +458,7 @@ fillColor: farba,
 const SUPABASE_AUTH_URL = `${SUPABASE_URL}/auth/v1`;
 
 async function prihlasitSa(email) {
-  const redirectUrl = 'https://kamvceskoslovensku.sk/';
+  const redirectUrl = 'https://kamvceskoslovensku.sk/hladat.html';
 
   const response = await fetch(
     `${SUPABASE_AUTH_URL}/otp?redirect_to=${encodeURIComponent(redirectUrl)}`,
