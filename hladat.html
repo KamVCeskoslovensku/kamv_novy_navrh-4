@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
-  <title>KamV ČESKOSLOVENSKU</title>
+  <title>Výlety, podujatia a turistické mapy | KamV ČESKOSLOVENSKU</title>
+  <meta name="description" content="Nájdite podujatia, výlety s deťmi a so psom, mototrasy, cyklotrasy, hrady a turistické mapy Slovenska a Česka.">
+  <link rel="canonical" href="https://www.kamvceskoslovensku.sk/hladat.html">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <meta name="google-site-verification" content="C1Q_cAg1TM2OZ9X51TRIlZfMa2ZSjbQD0pFDIgdrrI8" />
@@ -318,6 +320,12 @@
   <p>Česko a Slovensko na jednom mieste.</p>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(() => {
+ const country = new URLSearchParams(location.search).get('country');
+ if (['sk','cz'].includes(country)) document.getElementById('search-country').value = country;
+})();
+</script>
 <script src="app.js"></script>
   <script>
 const lang = new URLSearchParams(location.search).get('lang') || 'sk';
