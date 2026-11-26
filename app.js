@@ -406,52 +406,38 @@ if (mapaElement && typeof L !== 'undefined') {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap'
   }).addTo(mapa);
- L.circleMarker([48.1486, 17.1077], {
-  radius: 10,
-  color: 'red',
-  fillColor: 'red',
-  fillOpacity: 0.8
-}).addTo(mapa).bindPopup("📍 Bratislava – Slovensko");
 
-podujatia.forEach((p, index) => {
-  if (typeof p.lat === 'number' && typeof p.lon === 'number') {
-    const kategoria = (p.kategoria || '').toLowerCase();
-const farba =
-  /hudba|koncert|festival/.test(kategoria) ? 'purple' :
-  /šport|sport|beh|turistika/.test(kategoria) ? 'green' :
-  /divadlo|kultúra|kultura|výstava|vystava/.test(kategoria) ? 'orange' :
-  /motor|auto|moto|veterán|veteran|tuning|rally|preteky|zraz/.test(kategoria) ? 'red' :
-  'blue';
-    L.circleMarker([p.lat, p.lon], {
-      radius: 8,
-      color: farba,
-fillColor: farba,
-      
-      fillOpacity: 0.9
-    })
-      .addTo(mapa)
-  .bindPopup(`<div style="min-width:200px;max-width:260px;max-height:55vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch">
-  <b>${p.nazov}</b>
-  ${p.obrazok ? `<img src="${p.obrazok}" alt="" style="width:100%;border-radius:10px;margin:10px 0">` : ''}
-  <div>📍 ${p.mesto}</div>
-  <div>📅 ${new Date(p.datum).toLocaleString('sk-SK', {dateStyle:'medium',timeStyle:'short'})}</div>
-  <p>${p.popis || ''}</p>
-  <a href="${p.url}" target="_blank" rel="noopener noreferrer">👉 Viac informácií</a>
-</div>`, { maxWidth: 280, autoPan: true, autoPanPadding: [80, 80] });
-
+  const groups = {};
+  const colors = {'Podujatia':'#2563eb','Hudba':'#9333ea','Šport':'#16a34a','Kultúra':'#ea580c','Moto':'#dc2626','Turistika':'#15803d','Cyklistika':'#0891b2','Rodina':'#db2777','Príroda':'#65a30d','Hrady':'#92400e','Kemping':'#0f766e'};
+  for (const name of Object.keys(colors)) groups[name]=L.layerGroup().addTo(mapa);
+  const points=[
+    ['Turistika','Štrbské Pleso',49.119,20.063],['Turistika','Pustevny',49.49,18.264],
+    ['Príroda','Slovenský raj – Podlesok',48.967,20.386],['Príroda','Macocha',49.373,16.729],
+    ['Hrady','Spišský hrad',49.0008,20.7684],['Hrady','Karlštejn',49.939,14.188],
+    ['Rodina','Zoo Bojnice',48.781,18.574],['Rodina','Zoo Praha',50.117,14.412],
+    ['Moto','Čertovica',48.904,19.738],['Moto','Červenohorské sedlo',50.125,17.153],
+    ['Cyklistika','Dunajská hrádza – Gabčíkovo',47.891,17.578],['Cyklistika','Lednice',48.799,16.805],
+    ['Kemping','Autocamping Tatranská Štrba',49.086,20.069],['Kemping','Autokemp Merkur Pasohlávky',48.903,16.563]
+  ];
+  function addPoint(group,name,lat,lon,detail,url){
+    if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return;
+    const popup=document.createElement('div');
+    const title=document.createElement('strong');title.textContent=name;popup.append(title);
+    if(detail){const p=document.createElement('p');p.textContent=detail;popup.append(p);}
+    const link=document.createElement('a');link.textContent='🗺️ Otvoriť v Google Maps';link.target='_blank';link.rel='noopener noreferrer';link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+' '+lat+','+lon);popup.append(link);
+    try{const u=new URL(url);if(['https:','http:'].includes(u.protocol)){const more=document.createElement('a');more.href=u.href;more.target='_blank';more.rel='noopener noreferrer';more.textContent='Viac informácií';popup.append(document.createElement('br'),more);}}catch{}
+    L.circleMarker([lat,lon],{radius:8,color:colors[group],fillColor:colors[group],fillOpacity:0.85,weight:2}).bindPopup(popup).addTo(groups[group]);
   }
-});
-  setTimeout(() => {
-  mapa.invalidateSize();
-
-  const body = podujatia
-    .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng))
-    .map(p => [p.lat, p.lng]);
-
-  if (body.length > 0) {
-    mapa.fitBounds(body, { padding: [30, 30] });
+  for(const [group,name,lat,lon] of points)addPoint(group,name,lat,lon,'Orientačný bod – tip na výlet');
+  for(const p of podujatia){
+    const k=String(p.kategoria||'').toLowerCase();
+    const group=/motor|auto|moto|rally|zraz/.test(k)?'Moto':/hudba|koncert|festival/.test(k)?'Hudba':/šport|sport|beh/.test(k)?'Šport':/divadlo|kultúra|kultura|výstava|vystava/.test(k)?'Kultúra':'Podujatia';
+    addPoint(group,p.nazov,p.lat,p.lon??p.lng,[p.mesto,p.datum?new Date(p.datum).toLocaleString('sk-SK'):'',p.popis].filter(Boolean).join(' · '),p.url);
   }
-}, 300);
+  const overlays={};for(const name of Object.keys(groups))overlays['<span style="color:'+colors[name]+'">●</span> '+name]=groups[name];
+  L.control.layers(null,overlays,{collapsed:true}).addTo(mapa);
+  setTimeout(()=>mapa.invalidateSize(),300);
+
 }
  }); 
 // Prihlasovanie cez Supabase
