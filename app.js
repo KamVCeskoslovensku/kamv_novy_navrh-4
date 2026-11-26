@@ -564,3 +564,49 @@ if (formular) {
 });
 document.addEventListener('DOMContentLoaded', skontrolujPrihlasenie);
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('formular-mototrasy');
+  if (!form) return;
+  function validMap(value) {
+    try {
+      const u = new URL(value);
+      return u.protocol === 'https:' && !u.username && !u.password &&
+        (u.hostname === 'maps.app.goo.gl' || u.hostname === 'maps.google.com' ||
+        (['www.google.com','www.google.sk','www.google.cz','google.com'].includes(u.hostname) && /^\/maps(?:\/|$)/.test(u.pathname)));
+    } catch { return false; }
+  }
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]');
+    if (button.disabled) return;
+    const token = localStorage.getItem('kamv_access_token');
+    if (!token) return alert('Najprv sa prihlás.');
+    const data = {category:'moto', title:document.getElementById('moto-nazov').value.trim(), country:document.getElementById('moto-krajina').value, description:document.getElementById('moto-popis').value.trim(), map_url:document.getElementById('moto-mapa').value.trim()};
+    if (!data.title || !data.description || !validMap(data.map_url)) return alert('Vyplň názov, popis a platný odkaz na Google Maps.');
+    button.disabled = true;
+    try {
+      const response = await fetch(SUPABASE_URL+'/rest/v1/trips', {method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+token,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(data)});
+      if (response.status === 401) return alert('Prihlásenie vypršalo. Prihlás sa znova.');
+      if (!response.ok) throw new Error('HTTP '+response.status);
+      form.reset(); form.style.display='none';
+      alert('Mototrasa bola odoslaná a čaká na schválenie.');
+    } catch(error) { console.error(error); alert('Mototrasu sa nepodarilo uložiť. Skús to znova.'); }
+    finally { button.disabled=false; }
+  });
+  (async () => {
+    try {
+      const response=await fetch(SUPABASE_URL+'/rest/v1/trips?select=title,country,description,map_url&category=eq.moto&status=eq.approved&order=created_at.desc',{headers:{apikey:SUPABASE_KEY}});
+      if (!response.ok) throw new Error('HTTP '+response.status);
+      for (const route of await response.json()) {
+        if (!validMap(route.map_url)) continue;
+        const card=document.createElement('article'); card.className='event-card';
+        const title=document.createElement('h3'); title.textContent='🏍️ '+route.title;
+        const country=document.createElement('p'); country.textContent='📍 '+route.country;
+        const description=document.createElement('p'); description.textContent=route.description;
+        const link=document.createElement('a'); link.href=route.map_url; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='🗺️ Zobraziť mototrasu →';
+        card.append(title,country,description,link); document.getElementById('moto').appendChild(card);
+      }
+    } catch(error) { console.error('Načítanie mototrás:',error); }
+  })();
+});
