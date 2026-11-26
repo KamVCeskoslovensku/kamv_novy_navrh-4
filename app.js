@@ -417,7 +417,31 @@ if (mapaElement && typeof L !== 'undefined') {
     ['Rodina','Zoo Bojnice',48.781,18.574],['Rodina','Zoo Praha',50.117,14.412],
     ['Moto','Čertovica',48.904,19.738],['Moto','Červenohorské sedlo',50.125,17.153],
     ['Cyklistika','Dunajská hrádza – Gabčíkovo',47.891,17.578],['Cyklistika','Lednice',48.799,16.805],
-    ['Kemping','Autocamping Tatranská Štrba',49.086,20.069],['Kemping','Autokemp Merkur Pasohlávky',48.903,16.563]
+    ['Kemping','Autocamping Tatranská Štrba',49.086,20.069],['Kemping','Autokemp Merkur Pasohlávky',48.903,16.563],
+    ["Hrady","Oravský hrad",49.261,19.359,"Historický hrad nad riekou Orava."],
+    ["Hrady","Bojnický zámok",48.78,18.577,"Romantický zámok s historickými interiérmi."],
+    ["Hrady","Trenčiansky hrad",48.894,18.044,"Dominanta mesta Trenčín."],
+    ["Hrady","Hrad Devín",48.174,16.978,"Zrúcanina nad sútokom Dunaja a Moravy."],
+    ["Hrady","Hluboká nad Vltavou",49.052,14.441,"Novogotický zámok."],
+    ["Hrady","Lednický zámok",48.801,16.805,"Zámok a rozsiahly park."],
+    ["Hrady","Hrad Bouzov",49.705,16.889,"Historický hrad na Morave."],
+    ["Príroda","Šútovský vodopád",49.18,19.076,"Vodopád v Malej Fatre; cieľ pešej túry."],
+    ["Príroda","Súľovské skaly",49.17,18.59,"Skalné útvary a turistické chodníky."],
+    ["Príroda","Demänovská jaskyňa slobody",48.998,19.585,"Krasová jaskyňa v Nízkych Tatrách."],
+    ["Príroda","Adršpašské skaly",50.616,16.12,"Rozsiahle pieskovcové skalné mesto."],
+    ["Príroda","Prachovské skály",50.468,15.288,"Skalné mesto v Českom raji."],
+    ["Turistika","Hrebienok",49.159,20.224,"Východisko tatranských turistických trás."],
+    ["Turistika","Donovaly",48.878,19.226,"Horské stredisko a východisko výletov."],
+    ["Turistika","Jánošíkove diery",49.257,19.065,"Rokliny s lávkami a rebríkmi; overte priechodnosť."],
+    ["Turistika","Sněžka",50.736,15.739,"Najvyšší vrch Česka; horská turistika."],
+    ["Turistika","Praděd",50.083,17.231,"Najvyšší vrch Hrubého Jeseníka."],
+    ["Rodina","Vlkolínec",49.039,19.278,"Historická dedina zapísaná v UNESCO."],
+    ["Rodina","Zoo Košice",48.786,21.204,"Zoologická záhrada v Kavečanoch."],
+    ["Rodina","Zoo Zlín",49.272,17.714,"Zoologická záhrada v Lešnej."],
+    ["Rodina","Zoo Ostrava",49.844,18.318,"Zoologická záhrada a botanický areál."],
+    ["Rodina","Valašské múzeum v prírode",49.459,18.151,"Tradičná architektúra v Rožnove pod Radhoštěm."],
+    ["Príroda","Panská skála",50.77,14.485,"Čadičové skalné útvary."],
+    ["Hrady","Hrad Loket",50.186,12.754,"Hrad nad riekou Ohře."]
   ];
   function addPoint(group,name,lat,lon,detail,url){
     if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return;
@@ -428,7 +452,7 @@ if (mapaElement && typeof L !== 'undefined') {
     try{const u=new URL(url);if(['https:','http:'].includes(u.protocol)){const more=document.createElement('a');more.href=u.href;more.target='_blank';more.rel='noopener noreferrer';more.textContent='Viac informácií';popup.append(document.createElement('br'),more);}}catch{}
     L.circleMarker([lat,lon],{radius:8,color:colors[group],fillColor:colors[group],fillOpacity:0.85,weight:2}).bindPopup(popup).addTo(groups[group]);
   }
-  for(const [group,name,lat,lon] of points)addPoint(group,name,lat,lon,'Orientačný bod – tip na výlet');
+  for(const [group,name,lat,lon,description] of points)addPoint(group,name,lat,lon,(description?description+' ':'')+'Orientačný bod – pred cestou overte dostupnosť.');
   for(const p of podujatia){
     const k=String(p.kategoria||'').toLowerCase();
     const group=/motor|auto|moto|rally|zraz/.test(k)?'Moto':/hudba|koncert|festival/.test(k)?'Hudba':/šport|sport|beh/.test(k)?'Šport':/divadlo|kultúra|kultura|výstava|vystava/.test(k)?'Kultúra':'Podujatia';
