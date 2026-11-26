@@ -90,7 +90,7 @@
 
 
 
-<section class="content-section">
+<section class="content-section" id="podujatia">
   <div class="section-title">
     <h2>Najbližšie podujatia</h2>
     <a href="#event-list">Zobraziť všetky podujatia →</a>
@@ -174,6 +174,34 @@
 </article>
 
 </section>
+<section class="content-section" id="mapy-kategorie">
+<h2>🗺️ Mapy podľa záujmu</h2>
+<p>Vyber kategóriu a krajinu. Odkazy otvoria vyhľadávanie v Google Maps.</p>
+<label for="mapy-miesto">Mesto alebo región (nepovinné)</label>
+<input id="mapy-miesto" type="text" maxlength="100" placeholder="Napr. Liptov alebo Brno" style="width:100%;padding:12px;margin:8px 0 16px;box-sizing:border-box;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;">
+<article class="event-card" id="turistika"><h3>🥾 Turistika</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="turistické trasy" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=turistick%C3%A9%20trasy%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="turistické trasy" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=turistick%C3%A9%20trasy%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="cyklistika"><h3>🚲 Cyklistika</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="cyklotrasy" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=cyklotrasy%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="cyklotrasy" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=cyklotrasy%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="moto-mapy"><h3>🏍️ Moto</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="motorkárske trasy" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=motork%C3%A1rske%20trasy%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="motorkárske trasy" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=motork%C3%A1rske%20trasy%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="pes"><h3>🐾 So psom</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="parky pre psov" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=parky%20pre%20psov%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="parky pre psov" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=parky%20pre%20psov%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="rodina"><h3>👨‍👩‍👧 Rodina</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="rodinné atrakcie" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=rodinn%C3%A9%20atrakcie%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="rodinné atrakcie" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=rodinn%C3%A9%20atrakcie%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="kemping"><h3>⛺ Kemping</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="kempy" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=kempy%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="kempy" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=kempy%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="doprava"><h3>🚆 Doprava</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="vlakové a autobusové stanice" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=vlakov%C3%A9%20a%20autobusov%C3%A9%20stanice%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="vlakové a autobusové stanice" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=vlakov%C3%A9%20a%20autobusov%C3%A9%20stanice%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="hrady"><h3>🏰 Hrady a zámky</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="hrady a zámky" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=hrady%20a%20z%C3%A1mky%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="hrady a zámky" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=hrady%20a%20z%C3%A1mky%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="priroda"><h3>🌳 Príroda</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="prírodné zaujímavosti" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=pr%C3%ADrodn%C3%A9%20zauj%C3%ADmavosti%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="prírodné zaujímavosti" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=pr%C3%ADrodn%C3%A9%20zauj%C3%ADmavosti%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="jedlo"><h3>🍴 Jedlo</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="reštaurácie" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=re%C5%A1taur%C3%A1cie%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="reštaurácie" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=re%C5%A1taur%C3%A1cie%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+<article class="event-card" id="ubytovanie"><h3>🛏️ Ubytovanie</h3><div style="display:flex;flex-wrap:wrap;gap:12px;"><a class="kamv-map-link" data-query="ubytovanie" data-country="Slovensko" href="https://www.google.com/maps/search/?api=1&amp;query=ubytovanie%20Slovensko" target="_blank" rel="noopener noreferrer">🇸🇰 Slovensko</a><a class="kamv-map-link" data-query="ubytovanie" data-country="Česko" href="https://www.google.com/maps/search/?api=1&amp;query=ubytovanie%20%C4%8Cesko" target="_blank" rel="noopener noreferrer">🇨🇿 Česko</a></div></article>
+</div>
+</section>
+<script>
+(() => {
+ const input=document.getElementById('mapy-miesto');
+ const links=document.querySelectorAll('.kamv-map-link');
+ input.addEventListener('input',()=> {
+  for(const link of links) link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent([link.dataset.query,input.value.trim(),link.dataset.country].filter(Boolean).join(' '));
+ });
+})();
+</script>
 <section class="map-section">
   <div class="map-copy">
     <h2>Objavuj na mape</h2>
