@@ -26,7 +26,7 @@
 <meta property="og:description" content="Nájdite podujatia, výlety s deťmi a so psom, mototrasy, cyklotrasy, hrady a turistické mapy Slovenska a Česka.">
 <meta property="og:url" content="https://www.kamvceskoslovensku.sk/hladat.html">
 <meta property="og:site_name" content="KamV ČESKOSLOVENSKU">
-</head>
+<style>#moto{scroll-margin-top:90px}.moto-toggle{display:flex;align-items:center;gap:12px;cursor:pointer;padding:16px;border:1px solid #c4d9cc;border-radius:14px;background:#eef5ef;color:#183a33;font-size:clamp(17px,4vw,23px);font-weight:700;list-style:none}.moto-toggle::-webkit-details-marker{display:none}.moto-toggle>span:first-child{font-size:30px}.moto-toggle small{display:block;font-size:13px;font-weight:400;margin-top:4px}.moto-toggle::after{content:'＋';margin-left:auto}.moto-toggle:focus-visible{outline:3px solid #176047;outline-offset:3px}#moto-panel[open]>.moto-toggle::after{content:'−'}.moto-content{padding-top:12px}</style></head>
 
 <body>
 
@@ -124,7 +124,7 @@
   <div id="moto-list"></div>
 </section>
 <section id="moto" class="content-section">
-  <h2>🏍️ Mototuristika Česko & Slovensko</h2>
+  <details id="moto-panel"><summary class="moto-toggle"><span aria-hidden="true">🏍️</span><span>Mototuristika Česko &amp; Slovensko<small>Otvoriť alebo skryť mototrasy</small></span></summary><div class="moto-content">
   <p>Objavuj najkrajšie mototrasy, serpentíny, hrady a zastávky pre motorkárov.</p>
   <button id="pridat-mototrasu" type="button" style="padding:14px;margin:15px 0;border-radius:12px;">
   ➕ Pridať vlastnú mototrasu
@@ -191,7 +191,7 @@
   </a>
 </article>
 
-</section>
+</div></details></section>
 <section class="content-section" id="mapy-kategorie">
 <h2>🗺️ Mapy podľa záujmu</h2>
 <p>Vyber kategóriu a krajinu. Odkazy otvoria vyhľadávanie v Google Maps.</p>
@@ -498,5 +498,5 @@ zobrazZaujmy();
  render();
 })();
 </script>
-<script>(()=>{function openTip(){const id=location.hash.slice(1);if(/^inspiracia-[1-6]$/.test(id)){const d=document.getElementById(id);if(d){d.open=true;d.scrollIntoView({block:'start'});}}}window.addEventListener('hashchange',openTip);openTip();})();</script><script>(()=>{const trips=[["Vodopád Skok","sk","walk","#trasy-1"],["Smrekovica – Rakytov","sk","walk","rakytov.html"],["Ťatliakovo jazero","sk","walk","tatliakovo-jazero.html"],["Adršpašské skály","cz","walk","#inspiracia-1"],["Cyklokorytnička","sk","bike","#inspiracia-6"],["Třeboň","cz","bike","#inspiracia-6"],["Kubova Huť","cz","train","kubova-hut.html"],["Oravský hrad","sk","castle","#inspiracia-2"],["Karlštejn","cz","castle","#inspiracia-2"]];document.getElementById('qp-find').addEventListener('click',()=>{const country=document.getElementById('qp-country').value,type=document.getElementById('qp-type').value,out=document.getElementById('qp-results');out.replaceChildren();const matches=trips.filter(t=>(!country||t[1]===country)&&(!type||t[2]===type));if(!matches.length){out.textContent='Zatiaľ nemáme tip pre túto kombináciu. Skús iný výber.';return;}for(const t of matches){const a=document.createElement('a');a.href=t[3];a.textContent=t[0]+' →';out.append(a);}});})();</script></body>
+<script>(()=>{function openTip(){const id=location.hash.slice(1);if(/^inspiracia-[1-6]$/.test(id)){const d=document.getElementById(id);if(d){d.open=true;d.scrollIntoView({block:'start'});}}}window.addEventListener('hashchange',openTip);openTip();})();</script><script>(()=>{const trips=[["Vodopád Skok","sk","walk","#trasy-1"],["Smrekovica – Rakytov","sk","walk","rakytov.html"],["Ťatliakovo jazero","sk","walk","tatliakovo-jazero.html"],["Adršpašské skály","cz","walk","#inspiracia-1"],["Cyklokorytnička","sk","bike","#inspiracia-6"],["Třeboň","cz","bike","#inspiracia-6"],["Kubova Huť","cz","train","kubova-hut.html"],["Oravský hrad","sk","castle","#inspiracia-2"],["Karlštejn","cz","castle","#inspiracia-2"]];document.getElementById('qp-find').addEventListener('click',()=>{const country=document.getElementById('qp-country').value,type=document.getElementById('qp-type').value,out=document.getElementById('qp-results');out.replaceChildren();const matches=trips.filter(t=>(!country||t[1]===country)&&(!type||t[2]===type));if(!matches.length){out.textContent='Zatiaľ nemáme tip pre túto kombináciu. Skús iný výber.';return;}for(const t of matches){const a=document.createElement('a');a.href=t[3];a.textContent=t[0]+' →';out.append(a);}});})();</script><script>(()=>{const panel=document.getElementById('moto-panel');function openMoto(){if(location.hash==='#moto'||location.hash==='#pridat-mototrasu'||location.hash==='#formular-mototrasy')panel.open=true;}window.addEventListener('hashchange',openMoto);document.querySelectorAll('a[href="#moto"]').forEach(a=>a.addEventListener('click',()=>{panel.open=true;}));openMoto();})();</script></body>
 </html>
