@@ -606,7 +606,10 @@ const refreshToken =
   if (accessToken && refreshToken) {
     localStorage.setItem('kamv_access_token', accessToken);
     localStorage.setItem('kamv_refresh_token', refreshToken);
-    history.replaceState(null, '', window.location.pathname + window.location.search);
+    const cleanUrl = new URL(window.location.href);
+    for (const key of ['access_token','refresh_token','expires_in','expires_at','token_type','type','provider_token','provider_refresh_token']) cleanUrl.searchParams.delete(key);
+    cleanUrl.hash = '';
+    history.replaceState(null, '', cleanUrl.pathname + cleanUrl.search);
   }
 
   const token = localStorage.getItem('kamv_access_token');
@@ -632,7 +635,26 @@ const refreshToken =
 
     if (tlacidlo) {
       tlacidlo.textContent = '👤 Môj účet';
-      tlacidlo.onclick = () => alert('👤 Môj profil\n📧 ' + user.email);
+      tlacidlo.onclick = () => {
+        const dialog = document.getElementById('kamv-login-dialog');
+        if (!dialog) return;
+        const form = dialog.querySelector('form');
+        form.replaceChildren();
+        const h = document.createElement('h2'); h.textContent = 'Môj účet';
+        const p = document.createElement('p'); p.textContent = user.email || '';
+        const a = document.createElement('a'); a.href = '#kamv-sukromie'; a.textContent = 'Súkromie a vymazanie účtu'; a.onclick = () => dialog.close();
+        const logout = document.createElement('button'); logout.type = 'button'; logout.textContent = 'Odhlásiť sa';
+        logout.onclick = async () => {
+          logout.disabled = true;
+          try {
+            const res = await fetch(SUPABASE_AUTH_URL + '/logout?scope=local', {method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+token}});
+            if (!res.ok) throw new Error('logout');
+          } catch { alert('Serverové odhlásenie sa nepodarilo potvrdiť. Prihlásenie v tomto prehliadači odstránime.'); }
+          finally { localStorage.removeItem('kamv_access_token'); localStorage.removeItem('kamv_refresh_token'); location.reload(); }
+        };
+        const close = document.createElement('button'); close.type = 'button'; close.textContent = 'Zavrieť'; close.onclick = () => dialog.close();
+        form.append(h,p,a,document.createElement('hr'),logout,close); dialog.showModal();
+      };
     }
   } catch (error) {
     console.error('Chyba overenia prihlásenia:', error);
