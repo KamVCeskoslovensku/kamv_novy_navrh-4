@@ -54,9 +54,11 @@
   <div class="header-actions">
     <button aria-label="Hľadať">⌕</button>
     <button aria-label="Obľúbené">♡</button>
-    <button class="login" onclick="prihlasitSa(prompt('Zadajte svoj e-mail:'))">Prihlásiť</button>
+    <button class="login" type="button" onclick="document.getElementById('kamv-login-dialog').showModal()">Prihlásiť</button>
   </div>
 </header>
+<dialog id="kamv-login-dialog" style="max-width:min(420px,90vw);border:1px solid #aac4b5;border-radius:16px;padding:22px"><form id="kamv-login-form"><h2>Prihlásenie e-mailom</h2><p>E-mail použijeme na vytvorenie účtu a zaslanie prihlasovacieho odkazu cez Supabase. Prihlásenie nie je potrebné na prezeranie výletov.</p><p><a href="#kamv-sukromie" onclick="document.getElementById('kamv-login-dialog').close()">Informácie o súkromí a kontakt</a></p><label for="kamv-email">E-mail</label><input id="kamv-email" type="email" autocomplete="email" required style="display:block;width:100%;box-sizing:border-box;margin:8px 0"><button type="submit">Odoslať odkaz</button> <button type="button" onclick="this.closest('dialog').close()">Zavrieť</button><p id="kamv-login-status" role="status"></p></form></dialog>
+<script>document.getElementById('kamv-login-form').addEventListener('submit',async e=>{e.preventDefault();const b=e.target.querySelector('[type=submit]'),s=document.getElementById('kamv-login-status');b.disabled=true;s.textContent='Odosielam…';try{await prihlasitSa(document.getElementById('kamv-email').value.trim());s.textContent='Skontroluj svoju e-mailovú schránku.';}catch{ s.textContent='Odkaz sa nepodarilo odoslať. Skús neskôr.';}finally{b.disabled=false;}});</script>
 
 
 <main id="top">
@@ -295,7 +297,7 @@
 <footer>
   <strong>KamV ČESKOSLOVENSKU</strong>
   <p>Česko a Slovensko na jednom mieste.</p>
-</footer>
+<section id="kamv-sukromie" style="max-width:720px;margin:20px auto;padding:16px;text-align:left"><h2>Súkromie a kontakt</h2><p>Prevádzkovateľ: Pavol Slavkovský, súkromná osoba. Kontakt: <a href="mailto:slavkovskypal@gmail.com">slavkovskypal@gmail.com</a>.</p><p>Prihlásenie zabezpečuje Supabase. Obľúbené výlety, záujmy a prihlasovacie údaje relácie sa ukladajú v prehliadači. Funkcia vyhľadávania v okolí vyžaduje povolenie polohy. Mapy a zdroje podujatí využívajú externé služby.</p><p><a href="mailto:slavkovskypal@gmail.com?subject=Ziadost%20o%20vymazanie%20uctu">Požiadať o vymazanie účtu</a> alebo nás kontaktuj pri otázkach o osobných údajoch. Neposielaj heslá ani prihlasovacie kódy.</p><p>Úplné zásady ochrany osobných údajov pripravujeme.</p></section></footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (() => {
