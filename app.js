@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', async () => {
  const searchButton = searchBox?.querySelector('button') || document.querySelector('.search-box + button');
 let podujatia = [];
 try {
-  podujatia = await nacitajUdalosti();
-  podujatia.push(...(await nacitajBrno()));
+  const sources = await Promise.allSettled([nacitajUdalosti(),nacitajBrno()]);
+  podujatia = sources.flatMap(s=>s.status==='fulfilled'?s.value:[]);
 } catch (error) {
   console.error('Chyba načítania podujatí:', error);
 }
@@ -130,6 +130,30 @@ if (motoList) {
   `).join('');
 }
 
+  const typeButtons = [...document.querySelectorAll('[data-event-type]')];
+  const patterns = {music:/koncert|hudb|music|festival|opera/,culture:/kultur|divadl|theat|vystav|exhib|kino|film|muze/,sport:/sport|futbal|fotbal|hokej|beh|be h|cyklo|maraton/,moto:/motoriz|motocyk|motokros|motocross|motork|moto|rally|enduro|automobil/,family:/rodin|deti|detsk|family|children|pohad|rozprav/,fair:/jarmok|jarmark|trh|slavnost|hody|fair/,food:/gastro|jedlo|food|vino|pivo|degust|kulin/};
+  const normalizeEvent = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  function showEventType(type) {
+    const list=document.getElementById('event-list'), status=document.getElementById('event-type-status'), moto=document.getElementById('motoristicke');
+    if(!list||!status)return;
+    typeButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.eventType===type)));
+    if(moto)moto.hidden=type!=='moto';
+    list.replaceChildren();
+    const matches=type==='moto'?[]:podujatia.filter(p=>p.datum && (type==='all'||patterns[type]?.test(normalizeEvent(p.kategoria+' '+p.nazov))));
+    status.textContent=type==='moto'?'Motoristické kalendáre a podujatia nájdeš nižšie.':matches.length?'Nájdené podujatia: '+matches.length:'V tejto kategórii momentálne nemáme načítané podujatia. Skús inú kategóriu alebo neskôr.';
+    for(const p of matches.slice(0,100)){
+      const card=document.createElement('article');card.className='event-card';
+      const h=document.createElement('h3');h.textContent=p.nazov;card.append(h);
+      const info=document.createElement('p');info.textContent=[new Date(p.datum).toLocaleDateString('sk-SK'),p.mesto,p.kategoria].filter(Boolean).join(' • ');card.append(info);
+      try{const url=new URL(p.url);if(['https:','http:'].includes(url.protocol)){const a=document.createElement('a');a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Podrobnosti →';card.append(a);}}catch{}
+      list.append(card);
+    }
+    if(matches.length>100)status.textContent+=' (zobrazených prvých 100)';
+  }
+  typeButtons.forEach(b=>b.addEventListener('click',()=>showEventType(b.dataset.eventType)));
+  document.querySelector('#podujatia .section-title a')?.addEventListener('click',()=>showEventType('all'));
+  function revealMoto(){if(location.hash==='#motoristicke')showEventType('moto');}
+  window.addEventListener('hashchange',revealMoto);revealMoto();
   // Kliknutie na kategóriu presunie návštevníka
   // na príslušnú časť stránky.
   categories.forEach(card => {
@@ -153,6 +177,9 @@ if (motoList) {
   // Základná reakcia na vyhľadávanie.
   searchButton?.addEventListener('click', () => {
  document.getElementById('nearby-results')?.remove();
+ typeButtons.forEach(b=>b.setAttribute('aria-pressed','false'));
+ if(document.getElementById('motoristicke'))document.getElementById('motoristicke').hidden=true;
+ if(document.getElementById('event-type-status'))document.getElementById('event-type-status').textContent='Výsledky vyhľadávania';
     const what = document.getElementById('search-what')?.value.trim() || '';
 const where = document.getElementById('search-where')?.value.trim() || '';
 const when = document.getElementById('search-when')?.value || '';
